@@ -1,5 +1,4 @@
-import { initialDisplay } from './display';
-import { addToDoItem } from './createItem';
+import { displayAllTasks } from './display';
+import { addTask } from './createTask';
 
-initialDisplay();
-addToDoItem();
+displayAllTasks();
