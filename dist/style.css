@@ -4,6 +4,7 @@
     --color3: #ffcece;
     --color4: #FEF2F4;
     --hover-color: #f7c2c2;
+    --hover-color2: #f5e5e8;
     --text-color: #575757;
     --icon-filter1: invert(53%) sepia(63%) saturate(3230%) hue-rotate(311deg) brightness(84%) contrast(93%);
     --icon-filter2: invert(33%) sepia(2%) saturate(10%) hue-rotate(352deg) brightness(90%) contrast(77%);
@@ -14,6 +15,12 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     color: var(--text-color);
+}
+
+button, input {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
 }
 
 .container {
@@ -61,15 +68,16 @@ body {
     padding: 20px 0;
 }
 
-.link {
+.link, .project-btn, .task-btn {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 5px 20px;
     margin-bottom: 5px;
+    border-radius: 5px;
 }
 
-.link:hover {
+.link:hover, .project-btn:hover {
     background-color: var(--hover-color);
     cursor: pointer;
 }
@@ -77,6 +85,13 @@ body {
 .sidebar img {
     filter: var(--icon-filter2);
     width: 35px;
+}
+
+.project-btn, .task-btn {
+    border: none;
+    background-color: inherit;
+    width: 100%;
+    margin: 20px 0px;
 }
 
 /* ---------------MAIN CONTENT--------------- */
@@ -95,3 +110,12 @@ body {
     border-radius: 5px;
 }
 
+.task-btn img {
+    filter: var(--icon-filter2);
+    width: 35px;
+}
+
+.task-btn:hover {
+    background-color: var(--hover-color2);
+    cursor: pointer;
+}
