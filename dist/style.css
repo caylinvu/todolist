@@ -3,11 +3,10 @@
     --color2: #FFABAB;
     --color3: #ffcece;
     --color4: #FEF2F4;
-    --hover-color: #f7c2c2;
-    --hover-color2: #f5e5e8;
     --text-color: #575757;
     --icon-filter1: invert(53%) sepia(63%) saturate(3230%) hue-rotate(311deg) brightness(84%) contrast(93%);
     --icon-filter2: invert(33%) sepia(2%) saturate(10%) hue-rotate(352deg) brightness(90%) contrast(77%);
+    --hover-filter: brightness(95%);
 }
 
 body {
@@ -78,7 +77,8 @@ button, input {
 }
 
 .link:hover, .project-btn:hover {
-    background-color: var(--hover-color);
+    background-color: var(--color3);
+    filter: var(--hover-filter);
     cursor: pointer;
 }
 
@@ -92,6 +92,15 @@ button, input {
     background-color: inherit;
     width: 100%;
     margin: 20px 0px;
+}
+
+.selected {
+    background-color: var(--color2);
+}
+
+.selected:hover {
+    background-color: var(--color2);
+    filter: var(--hover-filter);
 }
 
 /* ---------------MAIN CONTENT--------------- */
@@ -116,6 +125,7 @@ button, input {
 }
 
 .task-btn:hover {
-    background-color: var(--hover-color2);
+    background-color: var(--color4);
+    filter: var(--hover-filter);
     cursor: pointer;
 }
