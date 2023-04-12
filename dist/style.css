@@ -3,6 +3,7 @@
     --color2: #FFABAB;
     --color3: #ffcece;
     --color4: #FEF2F4;
+    --hover-color: #f7c2c2;
     --text-color: #575757;
     --icon-filter1: invert(53%) sepia(63%) saturate(3230%) hue-rotate(311deg) brightness(84%) contrast(93%);
     --icon-filter2: invert(33%) sepia(2%) saturate(10%) hue-rotate(352deg) brightness(90%) contrast(77%);
@@ -17,7 +18,7 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 350px 1fr;
+    grid-template-columns: 340px 1fr;
     grid-template-rows: auto 1fr;
     min-height: 100vh;
 }
@@ -66,6 +67,11 @@ body {
     gap: 10px;
     padding: 5px 20px;
     margin-bottom: 5px;
+}
+
+.link:hover {
+    background-color: var(--hover-color);
+    cursor: pointer;
 }
 
 .sidebar img {
