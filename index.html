@@ -4,14 +4,47 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>To Do List</title>
+        <title>My To Do List</title>
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="container">
-            <div class="header">To Do List</div>
-            <div class="sidebar">dummy sidebar content</div>
-            <div class="main-content">dummy main content</div>
+            <div class="header">
+                <img src="images/notepad.svg" alt="notepad icon">
+                <div>My To Do List</div>
+            </div>
+            <div class="sidebar">
+                <div class="home">
+                    <div class="sidebar-heading">Home</div>
+                    <div class="home-links">
+                        <div class="link" id="all-tasks">
+                            <img src="images/task.svg" alt="task icon">
+                            <div>All Tasks</div>
+                        </div>
+                        <div class="link" id="today">
+                            <img src="images/today.svg" alt="today icon">
+                            <div>Today</div>
+                        </div>
+                        <div class="link" id="this-week">
+                            <img src="images/week.svg" alt="week icon">
+                            <div>This Week</div>
+                        </div>
+                        <div class="link" id="important">
+                            <img src="images/star-filled.svg" alt="star icon">
+                            <div>Important</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="projects">
+                    <div class="sidebar-heading">Projects</div>
+                    <div class="project-links"></div>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="content-heading"></div>
+                <div class="todo-container"></div>
+            </div>
         </div>
         <script src="main.js"></script>
     </body>
