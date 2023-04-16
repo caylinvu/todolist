@@ -15,3 +15,15 @@ thisWeek.addEventListener('click', displayThisWeek);
 important.addEventListener('click', displayImportant);
 
 export { allTasks, today, thisWeek, important, tabs }
+
+// TO DO
+
+// ADD HIDDEN FORM FOR NEW TASK
+
+// TIE TASK FORM INPUTS TO NEWTASK FUNCTION
+
+// CREATE FUNCTION FOR NEW PROJECT
+
+// ADD HIDDEN FORM FOR NEW PROJECT
+
+// TIE PROJECT FORM INPUTS TO NEWPROJECT FUNCTION

@@ -45,6 +45,28 @@
             <div class="main-content">
                 <div class="content-heading"></div>
                 <div class="todo-container"></div>
+                <form action="" method="post" class="task-form">
+                    <div class="task-form-div type-normal">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" class="input">
+                    </div>
+                    <div class="task-form-div type-normal">
+                        <label for="details">Details (optional):</label>
+                        <input type="text" id="details" name="details" class="input">
+                    </div>
+                    <div class="task-form-div type-normal">
+                        <label for="due-date">Due Date:</label>
+                        <input type="date" id="due-date" name="due-date" class="date-input">
+                    </div>
+                    <div class="task-form-div type-checkbox">
+                        <label for="is-important">Priority task?</label>
+                        <input type="checkbox" id="is-important" name="is-important" class="checkbox-input">
+                    </div>
+                    <div class="task-form-btns">
+                        <button type="submit" class="submit-btn">Add</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
             </div>
         </div>
         <script src="main.js"></script>
