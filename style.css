@@ -129,3 +129,31 @@ button, input {
     filter: var(--hover-filter);
     cursor: pointer;
 }
+
+/* ---------------ADD TASK FORM--------------- */
+
+.task-form {
+    padding: 20px;
+    
+}
+
+.task-form-div {
+    padding-bottom: 10px;
+}
+
+.type-normal label {
+    display: block;
+}
+
+.type-normal input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.type-checkbox {
+    padding: 10px 0 20px;
+}
+
+.task-form-btns {
+    text-align: center;
+}
