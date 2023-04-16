@@ -18,8 +18,6 @@ export { allTasks, today, thisWeek, important, tabs }
 
 // TO DO
 
-// ADD HIDDEN FORM FOR NEW TASK
-
 // TIE TASK FORM INPUTS TO NEWTASK FUNCTION
 
 // CREATE FUNCTION FOR NEW PROJECT

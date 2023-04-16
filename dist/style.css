@@ -134,7 +134,7 @@ button, input {
 
 .task-form {
     padding: 20px;
-    
+    display: none;
 }
 
 .task-form-div {
