@@ -1,10 +1,12 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
+import { myTaskList } from './createTask';
 
 const mainContent = document.querySelector('.main-content');
 const contentHeader = document.querySelector('.content-heading');
 const taskForm = document.querySelector('.task-form');
 const cancelBtn = document.querySelector('.cancel-btn');
 
+// highlight the selected navigation tab
 function highlightSelected(selectedTab) {
     tabs.forEach((tab) => {
         tab.classList.remove('selected');
@@ -13,6 +15,18 @@ function highlightSelected(selectedTab) {
     selectedTab.classList.toggle('selected');
 }
 
+// open/close the form to add new tasks
+function openTaskForm() {
+    taskForm.style.display = 'block';
+}
+
+function closeTaskForm() {
+    taskForm.style.display = 'none';
+}
+
+cancelBtn.onclick = closeTaskForm;
+
+// create and display the button to add new tasks
 function displayTaskBtn() {
     const taskBtn = document.createElement('button');
     taskBtn.classList.add('task-btn');
@@ -30,12 +44,14 @@ function displayTaskBtn() {
     mainContent.appendChild(taskBtn);
 }
 
+// remove the button to add new task (for pages where you cannot add new task)
 function removeTaskBtn() {
     if (mainContent.lastChild.className === 'task-btn') {
         mainContent.removeChild(mainContent.lastChild);
     }
 }
 
+// functions to display appropriate tasks for chosen tab
 function displayAllTasks() {
     removeTaskBtn();
     displayTaskBtn();
@@ -61,14 +77,4 @@ function displayImportant() {
     contentHeader.textContent = 'Important';
 }
 
-function openTaskForm() {
-    taskForm.style.display = 'block';
-}
-
-function closeTaskForm() {
-    taskForm.style.display = 'none';
-}
-
-cancelBtn.onclick = closeTaskForm;
-
-export { displayAllTasks, displayToday, displayThisWeek, displayImportant }
+export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm }

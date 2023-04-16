@@ -1,5 +1,4 @@
 import { displayAllTasks, displayToday, displayThisWeek, displayImportant } from './display';
-import { addTask } from './createTask';
 
 const allTasks = document.getElementById('all-tasks');
 const today = document.getElementById('today');
@@ -17,8 +16,6 @@ important.addEventListener('click', displayImportant);
 export { allTasks, today, thisWeek, important, tabs }
 
 // TO DO
-
-// TIE TASK FORM INPUTS TO NEWTASK FUNCTION
 
 // CREATE FUNCTION FOR NEW PROJECT
 
