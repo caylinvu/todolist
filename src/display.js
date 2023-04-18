@@ -126,9 +126,32 @@ function updateTaskDisplay() {
         toDoContainer.removeChild(toDoContainer.firstChild);
     }
 
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    let currentDate;
+    if (month < 10) {
+        currentDate = `${year}-0${month}-${day}`;
+    } else {
+        currentDate = `${year}-${month}-${day}`;
+    }
+
     if (contentHeader.textContent === 'All Tasks') {
         myTaskList.forEach((task, index) => {
-            console.log(task);
+            // console.log(task);
+            displayTask(task, index);
+        });
+    } else if (contentHeader.textContent === 'Today') {
+        const tasksToday = myTaskList.filter(task => task.dueDate === currentDate);
+        tasksToday.forEach((task, index) => {
+            displayTask(task, index);
+        });
+    } else if (contentHeader.textContent === 'This Week') {
+
+    } else if (contentHeader.textContent === 'Important') {
+        const tasksImportant = myTaskList.filter(task => task.isImportant);
+        tasksImportant.forEach((task, index) => {
             displayTask(task, index);
         });
     }
@@ -148,6 +171,7 @@ function displayToday() {
     removeTaskBtn();
     highlightSelected(today);
     contentHeader.textContent = 'Today';
+    updateTaskDisplay();
     closeTaskForm();
 }
 
@@ -155,6 +179,7 @@ function displayThisWeek() {
     removeTaskBtn();
     highlightSelected(thisWeek);
     contentHeader.textContent = 'This Week';
+    updateTaskDisplay();
     closeTaskForm();
 }
 
@@ -162,6 +187,7 @@ function displayImportant() {
     removeTaskBtn();
     highlightSelected(important);
     contentHeader.textContent = 'Important';
+    updateTaskDisplay();
     closeTaskForm();
 }
 
