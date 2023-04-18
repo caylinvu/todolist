@@ -1,5 +1,5 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
-import { myTaskList } from './createTask';
+import { myTaskList, clearTaskForm } from './createTask';
 
 const mainContent = document.querySelector('.main-content');
 const contentHeader = document.querySelector('.content-heading');
@@ -23,6 +23,7 @@ function openTaskForm() {
 
 function closeTaskForm() {
     taskForm.style.display = 'none';
+    clearTaskForm();
 }
 
 cancelBtn.onclick = closeTaskForm;
@@ -58,8 +59,13 @@ function displayTask(task, index) {
     taskDiv.classList.add('task-div');
     toDoContainer.appendChild(taskDiv);
 
+    const taskLeft = document.createElement('div');
+    taskLeft.classList.add('task-left');
+    taskDiv.appendChild(taskLeft);
+
     const taskStatus = document.createElement('div');
-    taskDiv.appendChild(taskStatus);
+    taskStatus.classList.add('task-status');
+    taskLeft.appendChild(taskStatus);
 
     const taskIncomplete = document.createElement('img');
     taskIncomplete.src = './images/circle-unfilled.svg';
@@ -67,26 +73,51 @@ function displayTask(task, index) {
 
     const titleDisplay = document.createElement('div');
     titleDisplay.textContent = task.title;
-    taskDiv.appendChild(titleDisplay);
+    taskLeft.appendChild(titleDisplay);
+
+    const taskRight = document.createElement('div');
+    taskRight.classList.add('task-right');
+    taskDiv.appendChild(taskRight);
 
     const dueDateDisplay = document.createElement('div');
-    dueDateDisplay.textContent = task.dueDate;
-    taskDiv.appendChild(dueDateDisplay);
+    if (!task.dueDate) {
+        dueDateDisplay.textContent = 'No Due Date';
+    } else {
+        dueDateDisplay.textContent = task.dueDate;
+    }
+    taskRight.appendChild(dueDateDisplay);
 
-    const priorityStatus = document.createElement('div');
-    taskDiv.appendChild(priorityStatus);
+    const priorityStatus = document.createElement('button');
+    priorityStatus.classList.add('priority-status');
+    taskRight.appendChild(priorityStatus);
 
     const noPriority = document.createElement('img');
     noPriority.src = './images/star-unfilled.svg';
-    priorityStatus.appendChild(noPriority);
 
-    const editBtn = document.createElement('img');
-    editBtn.src = './images/edit.svg';
-    taskDiv.appendChild(editBtn);
+    const priority = document.createElement('img');
+    priority.src = '/images/star-filled.svg';
 
-    const deleteBtn = document.createElement('img');
-    deleteBtn.src = './images/trash.svg';
-    taskDiv.appendChild(deleteBtn);
+    if (task.isImportant) {
+        priorityStatus.appendChild(priority);
+    } else {
+        priorityStatus.appendChild(noPriority);
+    }
+
+    const taskEditBtn = document.createElement('button')
+    taskEditBtn.classList.add('task-edit-btn');
+    taskRight.appendChild(taskEditBtn);
+
+    const editBtnImg = document.createElement('img');
+    editBtnImg.src = './images/edit.svg';
+    taskEditBtn.appendChild(editBtnImg);
+
+    const taskDeleteBtn = document.createElement('button');
+    taskDeleteBtn.classList.add('task-delete-btn');
+    taskRight.appendChild(taskDeleteBtn);
+
+    const deleteBtnImg = document.createElement('img');
+    deleteBtnImg.src = './images/trash.svg';
+    taskDeleteBtn.appendChild(deleteBtnImg);
 }
 
 // function to update the task list display
@@ -97,6 +128,7 @@ function updateTaskDisplay() {
 
     if (contentHeader.textContent === 'All Tasks') {
         myTaskList.forEach((task, index) => {
+            console.log(task);
             displayTask(task, index);
         });
     }
@@ -109,24 +141,28 @@ function displayAllTasks() {
     highlightSelected(allTasks);
     contentHeader.textContent = 'All Tasks';
     updateTaskDisplay();
+    closeTaskForm();
 }
 
 function displayToday() {
     removeTaskBtn();
     highlightSelected(today);
     contentHeader.textContent = 'Today';
+    closeTaskForm();
 }
 
 function displayThisWeek() {
     removeTaskBtn();
     highlightSelected(thisWeek);
     contentHeader.textContent = 'This Week';
+    closeTaskForm();
 }
 
 function displayImportant() {
     removeTaskBtn();
     highlightSelected(important);
     contentHeader.textContent = 'Important';
+    closeTaskForm();
 }
 
 export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm }

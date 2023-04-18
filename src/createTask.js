@@ -10,6 +10,9 @@ const myTaskList = [];
 
 const task = (title, description, dueDate, isImportant) => ({ title, description, dueDate, isImportant });
 
+const testTask = task('This is a test task', 'Details of the task', '2023-04-20', false);
+myTaskList.push(testTask);
+
 function addTask() {
     const title = titleInput.value;
     const description = detailsInput.value;
@@ -24,19 +27,22 @@ function addTask() {
     return newTask;
 }
 
+function clearTaskForm() {
+    titleInput.value = '';
+    detailsInput.value = '';
+    dueDateInput.value = '';
+    isImportantInput.checked = false;
+}
+
 addTaskBtn.addEventListener('click', (e) => {
     if (!addTaskForm.checkValidity()) {
         addTaskForm.reportValidity();
     } else {
         addTask();
         closeTaskForm();
+        clearTaskForm();
         e.preventDefault();
-
-        titleInput.value = '';
-        detailsInput.value = '';
-        dueDateInput.value = '';
-        isImportantInput.checked = false;
     }
 });
 
-export { myTaskList }
+export { myTaskList, clearTaskForm }
