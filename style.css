@@ -12,7 +12,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     color: var(--text-color);
 }
 
@@ -35,7 +35,7 @@ button, input {
     grid-column: 1 / 3;
     background-color: var(--color2);
     font-family: 'Righteous', cursive;
-    font-size: 55px;
+    font-size: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +57,7 @@ button, input {
 }
 
 .sidebar-heading {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
     border-bottom: solid 2px var(--text-color);
     padding: 10px;
@@ -71,7 +71,7 @@ button, input {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 5px 20px;
+    padding: 7px 20px;
     margin-bottom: 5px;
     border-radius: 5px;
 }
@@ -84,7 +84,7 @@ button, input {
 
 .sidebar img {
     filter: var(--icon-filter2);
-    width: 35px;
+    width: 30px;
 }
 
 .project-btn, .task-btn {
@@ -119,9 +119,71 @@ button, input {
     border-radius: 5px;
 }
 
+.todo-container {
+    padding-top: 27px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.task-div,
+.task-left,
+.task-right,
+.task-status,
+.priority-status,
+.task-edit-btn,
+.task-delete-btn {
+    display: flex;
+    align-items: center;
+}
+
+.task-div {
+    border: solid 1px var(--text-color);
+    border-radius: 5px;
+    justify-content: space-between;
+    padding: 7px 10px;
+    gap: 35px;
+}
+
+.task-div:hover {
+    cursor: pointer;
+}
+
+.task-left {
+    gap: 10px;
+    min-width: 150px;
+}
+
+.task-right {
+    gap: 7px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.task-right button {
+    border: none;
+    padding: 3px;
+    background-color: inherit;
+}
+
+.task-right button:hover {
+    background-color: var(--color4);
+    filter: var(--hover-filter);
+    cursor: pointer;
+}
+
+.priority-status {
+    margin-left: 20px;
+}
+
+.task-div img {
+    filter: var(--icon-filter2);
+    width: 23px;
+}
+
 .task-btn img {
     filter: var(--icon-filter2);
-    width: 35px;
+    width: 30px;
 }
 
 .task-btn:hover {
@@ -135,6 +197,10 @@ button, input {
 .task-form {
     padding: 20px;
     display: none;
+    background-color: var(--color4);
+    filter: brightness(105%);
+    margin-top: 27px;
+    border-radius: 5px;
 }
 
 .task-form-div {
