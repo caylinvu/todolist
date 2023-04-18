@@ -172,6 +172,10 @@ button, input {
     cursor: pointer;
 }
 
+.task-incomplete:hover {
+    filter: var(--hover-filter);
+}
+
 .priority-status {
     margin-left: 20px;
 }

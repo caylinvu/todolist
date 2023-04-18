@@ -1,5 +1,6 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
 import { myTaskList, clearTaskForm } from './createTask';
+import { toggleComplete } from './editTask';
 
 const mainContent = document.querySelector('.main-content');
 const contentHeader = document.querySelector('.content-heading');
@@ -68,6 +69,7 @@ function displayTask(task, index) {
     taskLeft.appendChild(taskStatus);
 
     const taskIncomplete = document.createElement('img');
+    taskIncomplete.classList.add('task-incomplete');
     taskIncomplete.src = './images/circle-unfilled.svg';
     taskStatus.appendChild(taskIncomplete);
 
@@ -75,6 +77,8 @@ function displayTask(task, index) {
     titleDisplay.textContent = task.title;
     taskLeft.appendChild(titleDisplay);
 
+    taskStatus.onclick = toggleComplete.bind(this, taskIncomplete, taskStatus, titleDisplay);
+    
     const taskRight = document.createElement('div');
     taskRight.classList.add('task-right');
     taskDiv.appendChild(taskRight);
