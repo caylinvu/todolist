@@ -1,4 +1,4 @@
-import { closeTaskForm } from "./display";
+import { closeTaskForm, displayAllTasks } from "./display";
 
 const titleInput = document.getElementById('title');
 const detailsInput = document.getElementById('details');
@@ -18,8 +18,9 @@ function addTask() {
 
     const newTask = task(title, description, dueDate, isImportant);
     myTaskList.push(newTask);
-    console.log(newTask);
-    console.log(myTaskList);
+/*     console.log(newTask);
+    console.log(myTaskList); */
+    displayAllTasks();
     return newTask;
 }
 
