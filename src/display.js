@@ -95,7 +95,7 @@ function displayTask(task, index) {
     noPriority.src = './images/star-unfilled.svg';
 
     const priority = document.createElement('img');
-    priority.src = '/images/star-filled.svg';
+    priority.src = './images/star-filled.svg';
 
     if (task.isImportant) {
         priorityStatus.appendChild(priority);
@@ -148,7 +148,20 @@ function updateTaskDisplay() {
             displayTask(task, index);
         });
     } else if (contentHeader.textContent === 'This Week') {
+        const currentWeekEnd = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 7);
 
+        const tasksThisWeek = myTaskList.filter(task => {
+            const taskDateArray = task.dueDate.split('-');
+            const taskYear = taskDateArray[0];
+            const taskMonth = parseInt(taskDateArray[1], 10) - 1;
+            const taskDay = taskDateArray[2];
+            const taskDate = new Date(taskYear, taskMonth, taskDay);
+            return (taskDate >= date && taskDate <= currentWeekEnd) || (task.dueDate === currentDate);
+        });
+
+        tasksThisWeek.forEach((task, index) => {
+            displayTask(task, index);
+        });
     } else if (contentHeader.textContent === 'Important') {
         const tasksImportant = myTaskList.filter(task => task.isImportant);
         tasksImportant.forEach((task, index) => {

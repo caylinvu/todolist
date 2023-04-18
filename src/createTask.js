@@ -15,7 +15,9 @@ const testTask2 = task('This task is due today', '', '2023-04-18', false);
 const testTask3 = task('This task is important', '', '2023-04-19', true);
 const testTask4 = task('This task is due next week', '', '2023-04-28', false);
 const testTask5 = task('This task is due next week but within 7 days', '', '2023-04-24', false);
-myTaskList.push(testTask, testTask2, testTask3, testTask4, testTask5);
+const testTask6 = task('This task is due exactly 7 days from now', '', '2023-04-25', true);
+const testTask7 = task('This task is due a day after 7 days', '', '2023-04-26', false);
+myTaskList.push(testTask, testTask2, testTask3, testTask4, testTask5, testTask6, testTask7);
 
 function addTask() {
     const title = titleInput.value;
@@ -25,8 +27,6 @@ function addTask() {
 
     const newTask = task(title, description, dueDate, isImportant);
     myTaskList.push(newTask);
-/*     console.log(newTask);
-    console.log(myTaskList); */
     displayAllTasks();
     return newTask;
 }
