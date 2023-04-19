@@ -1,6 +1,6 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
 import { myTaskList, clearTaskForm } from './createTask';
-import { toggleComplete } from './editTask';
+import { toggleComplete, togglePriority } from './editTask';
 
 const mainContent = document.querySelector('.main-content');
 const contentHeader = document.querySelector('.content-heading');
@@ -73,7 +73,6 @@ function displayTask(task, index) {
     taskIncomplete.src = './images/circle-unfilled.svg';
 
     const taskComplete = document.createElement('img');
-    taskComplete.classList.add('task-complete');
     taskComplete.src = './images/circle-filled.svg';
 
     const titleDisplay = document.createElement('div');
@@ -114,9 +113,13 @@ function displayTask(task, index) {
 
     if (task.isImportant) {
         priorityStatus.appendChild(priority);
+        priorityStatus.classList.add('priority');
     } else {
         priorityStatus.appendChild(noPriority);
+        priorityStatus.classList.add('no-priority');
     }
+
+    priorityStatus.onclick = togglePriority.bind(this, priorityStatus, task);
 
     const taskEditBtn = document.createElement('button')
     taskEditBtn.classList.add('task-edit-btn');

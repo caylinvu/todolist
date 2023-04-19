@@ -26,7 +26,31 @@ function toggleComplete(status, statusContainer, title, task) {
     }
 }
 
-export { toggleComplete }
+function togglePriority(statusContainer, task) {
+    if (statusContainer.classList.value === 'priority-status priority') {
+        statusContainer.classList.toggle('priority');
+        statusContainer.classList.toggle('no-priority');
+        statusContainer.removeChild(statusContainer.lastChild);
+
+        const noPriority = document.createElement('img');
+        noPriority.src = './images/star-unfilled.svg';
+        statusContainer.appendChild(noPriority);
+
+        task.isImportant = false;
+    } else if (statusContainer.classList.value === 'priority-status no-priority') {
+        statusContainer.classList.toggle('no-priority');
+        statusContainer.classList.toggle('priority');
+        statusContainer.removeChild(statusContainer.lastChild);
+
+        const priority = document.createElement('img');
+        priority.src = './images/star-filled.svg';
+        statusContainer.appendChild(priority);
+
+        task.isImportant = true;
+    }
+}
+
+export { toggleComplete, togglePriority }
 
 // TOGGLE WITH HIDDEN SPAN INSTEAD!!!!!!!!!!!
 
