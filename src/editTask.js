@@ -58,21 +58,33 @@ function togglePriority(statusContainer, task) {
     }
 }
 
+function autofillTaskInfo(task) {
+    editTitleInput.value = task.title;
+    editDueDateInput.value = task.dueDate;
+    editIsImportantInput.checked = task.isImportant;
+    if (task.details) {
+        editDetailsInput.value = task.details;
+    } else {
+        editDetailsInput.value = '';
+    }
+}
+
 function editTask(task, taskDiv, toDoContainer) {
     if (editTaskForm.style.display === 'none') {
         taskDiv.classList.toggle('editing-task');
-
+        
         editTaskForm.style.display = 'block';
         toDoContainer.insertBefore(editTaskForm, taskDiv);
 
-        editTitleInput.value = task.title;
-        editDueDateInput.value = task.dueDate;
-        editIsImportantInput.checked = task.isImportant;
-        if (task.details) {
-            editDetailsInput.value = task.details;
-        } else {
-            editDetailsInput.value = '';
-        }
+        autofillTaskInfo(task);
+    } else {
+        const openTask = document.querySelector('.editing-task');
+        openTask.classList.toggle('editing-task');
+
+        taskDiv.classList.toggle('editing-task');
+        toDoContainer.insertBefore(editTaskForm, taskDiv);
+
+        autofillTaskInfo(task);
     }
 }
 
