@@ -1,5 +1,13 @@
 import { myTaskList } from "./createTask";
 
+const editTaskForm = document.querySelector('.edit-task-form');
+const editTitleInput = document.getElementById('edit-title');
+const editDetailsInput = document.getElementById('edit-details');
+const editDueDateInput = document.getElementById('edit-due-date');
+const editIsImportantInput = document.getElementById('edit-is-important');
+const editSubmitBtn = document.querySelector('.edit-submit-btn');
+const editCancelBtn = document.querySelector('.edit-cancel-btn');
+
 function toggleComplete(status, statusContainer, title, task) {
     if (status.classList.value === 'task-incomplete') {
         status.classList.toggle('task-incomplete');
@@ -51,24 +59,21 @@ function togglePriority(statusContainer, task) {
 }
 
 function editTask(task, taskDiv, toDoContainer) {
-    taskDiv.classList.toggle('editing-task');
+    if (editTaskForm.style.display === 'none') {
+        taskDiv.classList.toggle('editing-task');
 
-    const editTaskForm = document.querySelector('.edit-task-form');
-    editTaskForm.style.display = 'block';
-    toDoContainer.insertBefore(editTaskForm, taskDiv);
+        editTaskForm.style.display = 'block';
+        toDoContainer.insertBefore(editTaskForm, taskDiv);
 
-    const editTitleInput = document.getElementById('edit-title');
-    const editDetailsInput = document.getElementById('edit-details');
-    const editDueDateInput = document.getElementById('edit-due-date');
-    const editIsImportantInput = document.getElementById('edit-is-important');
-    const editSubmitBtn = document.querySelector('.edit-submit-btn');
-    const editCancelBtn = document.querySelector('.edit-cancel-btn');
-
-    editTitleInput.value = task.title;
-    editDetailsInput.value = task.details;
-    editDueDateInput.value = task.dueDate;
-    editIsImportantInput.checked = task.isImportant;
-
+        editTitleInput.value = task.title;
+        editDueDateInput.value = task.dueDate;
+        editIsImportantInput.checked = task.isImportant;
+        if (task.details) {
+            editDetailsInput.value = task.details;
+        } else {
+            editDetailsInput.value = '';
+        }
+    }
 }
 
 export { toggleComplete, togglePriority, editTask }

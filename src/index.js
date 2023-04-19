@@ -31,3 +31,5 @@ export { allTasks, today, thisWeek, important, tabs }
 // ADD HIDDEN FORM FOR NEW PROJECT
 
 // TIE PROJECT FORM INPUTS TO NEWPROJECT FUNCTION
+
+// ADD PLACEHOLDERS ON FORMS
