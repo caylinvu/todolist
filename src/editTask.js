@@ -1,4 +1,6 @@
-function toggleComplete(status, statusContainer, title) {
+import { myTaskList } from "./createTask";
+
+function toggleComplete(status, statusContainer, title, task) {
     if (status.classList.value === 'task-incomplete') {
         status.classList.toggle('task-incomplete');
         statusContainer.removeChild(statusContainer.lastChild);
@@ -8,6 +10,8 @@ function toggleComplete(status, statusContainer, title) {
         statusContainer.appendChild(taskComplete);
 
         title.style.setProperty('text-decoration', 'line-through');
+
+        task.isComplete = true;
     } else {
         status.classList.toggle('task-incomplete');
         statusContainer.removeChild(statusContainer.lastChild);
@@ -17,6 +21,8 @@ function toggleComplete(status, statusContainer, title) {
         statusContainer.appendChild(taskIncomplete);
 
         title.style.setProperty('text-decoration', 'none');
+
+        task.isComplete = false;
     }
 }
 

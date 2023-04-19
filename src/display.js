@@ -71,25 +71,36 @@ function displayTask(task, index) {
     const taskIncomplete = document.createElement('img');
     taskIncomplete.classList.add('task-incomplete');
     taskIncomplete.src = './images/circle-unfilled.svg';
-    taskStatus.appendChild(taskIncomplete);
+
+    const taskComplete = document.createElement('img');
+    taskComplete.classList.add('task-complete');
+    taskComplete.src = './images/circle-filled.svg';
 
     const titleDisplay = document.createElement('div');
     titleDisplay.textContent = task.title;
     taskLeft.appendChild(titleDisplay);
 
-    taskStatus.onclick = toggleComplete.bind(this, taskIncomplete, taskStatus, titleDisplay);
+    if (task.isComplete) {
+    taskStatus.appendChild(taskComplete);
+    titleDisplay.style.setProperty('text-decoration', 'line-through');
+    } else {
+        taskStatus.appendChild(taskIncomplete);
+    }
+
+    taskStatus.onclick = toggleComplete.bind(this, taskIncomplete, taskStatus, titleDisplay, task);
     
     const taskRight = document.createElement('div');
     taskRight.classList.add('task-right');
     taskDiv.appendChild(taskRight);
 
     const dueDateDisplay = document.createElement('div');
+    taskRight.appendChild(dueDateDisplay);
+
     if (!task.dueDate) {
         dueDateDisplay.textContent = 'No Due Date';
     } else {
         dueDateDisplay.textContent = task.dueDate;
     }
-    taskRight.appendChild(dueDateDisplay);
 
     const priorityStatus = document.createElement('button');
     priorityStatus.classList.add('priority-status');
