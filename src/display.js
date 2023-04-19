@@ -1,11 +1,12 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
 import { myTaskList, clearTaskForm } from './createTask';
-import { toggleComplete, togglePriority } from './editTask';
+import { toggleComplete, togglePriority, editTask } from './editTask';
 
 const mainContent = document.querySelector('.main-content');
 const contentHeader = document.querySelector('.content-heading');
 const toDoContainer = document.querySelector('.todo-container');
 const taskForm = document.querySelector('.task-form');
+const editTaskForm = document.querySelector('.edit-task-form');
 const cancelBtn = document.querySelector('.cancel-btn');
 
 // highlight the selected navigation tab
@@ -129,6 +130,8 @@ function displayTask(task, index) {
     editBtnImg.src = './images/edit.svg';
     taskEditBtn.appendChild(editBtnImg);
 
+    taskEditBtn.onclick = editTask.bind(this, task, taskDiv, toDoContainer);
+
     const taskDeleteBtn = document.createElement('button');
     taskDeleteBtn.classList.add('task-delete-btn');
     taskRight.appendChild(taskDeleteBtn);
@@ -138,11 +141,22 @@ function displayTask(task, index) {
     taskDeleteBtn.appendChild(deleteBtnImg);
 }
 
-// function to update the task list display
-function updateTaskDisplay() {
-    while (toDoContainer.firstChild) {
+// function to clear display 
+function clearDisplay() {
+    while (toDoContainer.firstChild && toDoContainer.firstChild.className != 'edit-task-form') {
         toDoContainer.removeChild(toDoContainer.firstChild);
     }
+
+    while(toDoContainer.lastChild && toDoContainer.lastChild.className != 'edit-task-form') {
+        toDoContainer.removeChild(toDoContainer.lastChild);
+    }
+
+    editTaskForm.style.display = 'none';
+}
+
+// function to update the task list display
+function updateTaskDisplay() {
+    clearDisplay();
 
     const date = new Date();
     const day = date.getDate();

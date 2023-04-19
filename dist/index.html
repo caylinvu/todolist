@@ -45,6 +45,28 @@
             <div class="main-content">
                 <div class="content-heading"></div>
                 <div class="todo-container"></div>
+                <form action="" method="post" class="edit-task-form">
+                    <div class="task-form-div type-normal">
+                        <label for="edit-title">Title:</label>
+                        <input type="text" id="edit-title" name="edit-title" class="input" required>
+                    </div>
+                    <div class="task-form-div type-normal">
+                        <label for="edit-details">Details (optional):</label>
+                        <input type="text" id="edit-details" name="edit-details" class="input">
+                    </div>
+                    <div class="task-form-div type-normal">
+                        <label for="edit-due-date">Due Date:</label>
+                        <input type="date" id="edit-due-date" name="edit-due-date" class="date-input">
+                    </div>
+                    <div class="task-form-div type-checkbox">
+                        <label for="edit-is-important">Priority task?</label>
+                        <input type="checkbox" id="edit-is-important" name="edit-is-important" class="checkbox-input">
+                    </div>
+                    <div class="task-form-btns">
+                        <button type="submit" class="edit-submit-btn">Add</button>
+                        <button type="button" class="edit-cancel-btn">Cancel</button>
+                    </div>
+                </form>
                 <form action="" method="post" class="task-form">
                     <div class="task-form-div type-normal">
                         <label for="title">Title:</label>

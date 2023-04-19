@@ -50,8 +50,25 @@ function togglePriority(statusContainer, task) {
     }
 }
 
-export { toggleComplete, togglePriority }
+function editTask(task, taskDiv, toDoContainer) {
+    taskDiv.classList.toggle('editing-task');
 
-// TOGGLE WITH HIDDEN SPAN INSTEAD!!!!!!!!!!!
+    const editTaskForm = document.querySelector('.edit-task-form');
+    editTaskForm.style.display = 'block';
+    toDoContainer.insertBefore(editTaskForm, taskDiv);
 
-// NEED TO MARK AS COMPLETE SO THAT ARRAY RECOGNIZES
+    const editTitleInput = document.getElementById('edit-title');
+    const editDetailsInput = document.getElementById('edit-details');
+    const editDueDateInput = document.getElementById('edit-due-date');
+    const editIsImportantInput = document.getElementById('edit-is-important');
+    const editSubmitBtn = document.querySelector('.edit-submit-btn');
+    const editCancelBtn = document.querySelector('.edit-cancel-btn');
+
+    editTitleInput.value = task.title;
+    editDetailsInput.value = task.details;
+    editDueDateInput.value = task.dueDate;
+    editIsImportantInput.checked = task.isImportant;
+
+}
+
+export { toggleComplete, togglePriority, editTask }

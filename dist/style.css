@@ -227,3 +227,14 @@ button, input {
 .task-form-btns {
     text-align: center;
 }
+
+/* ---------------EDIT TASK FORM--------------- */
+
+.edit-task-form {
+    display: none;
+    padding: 20px;
+}
+
+.editing-task {
+    display: none;
+}
