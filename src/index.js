@@ -33,3 +33,7 @@ export { allTasks, today, thisWeek, important, tabs }
 // TIE PROJECT FORM INPUTS TO NEWPROJECT FUNCTION
 
 // ADD PLACEHOLDERS ON FORMS
+
+// FINISH UI
+
+// ADD MOBILE SUPPORT

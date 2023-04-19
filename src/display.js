@@ -236,4 +236,4 @@ function displayImportant() {
     closeTaskForm();
 }
 
-export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm }
+export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm, updateTaskDisplay }

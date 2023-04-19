@@ -1,4 +1,5 @@
 import { myTaskList } from "./createTask";
+import { updateTaskDisplay } from "./display";
 
 const editTaskForm = document.querySelector('.edit-task-form');
 const editTitleInput = document.getElementById('edit-title');
@@ -58,6 +59,28 @@ function togglePriority(statusContainer, task) {
     }
 }
 
+function openEditTaskForm() {
+    editTaskForm.style.display = 'block';
+}
+
+function clearEditTaskForm() {
+    editTitleInput.value = '';
+    editDetailsInput.value = '';
+    editDueDateInput.value = '';
+    editIsImportantInput.checked = false;
+}
+
+function showHiddenTask() {
+    const openTask = document.querySelector('.editing-task');
+    openTask.classList.toggle('editing-task');
+}
+
+function closeEditTaskForm() {
+    editTaskForm.style.display = 'none';
+    clearEditTaskForm();
+    showHiddenTask();
+}
+
 function autofillTaskInfo(task) {
     editTitleInput.value = task.title;
     editDueDateInput.value = task.dueDate;
@@ -70,22 +93,68 @@ function autofillTaskInfo(task) {
 }
 
 function editTask(task, taskDiv, toDoContainer) {
+    console.log(task.title);
     if (editTaskForm.style.display === 'none') {
         taskDiv.classList.toggle('editing-task');
-        
-        editTaskForm.style.display = 'block';
+        openEditTaskForm();
         toDoContainer.insertBefore(editTaskForm, taskDiv);
-
         autofillTaskInfo(task);
     } else {
-        const openTask = document.querySelector('.editing-task');
-        openTask.classList.toggle('editing-task');
-
+        showHiddenTask();
         taskDiv.classList.toggle('editing-task');
         toDoContainer.insertBefore(editTaskForm, taskDiv);
-
         autofillTaskInfo(task);
     }
+
+/*     editSubmitBtn.addEventListener('click', (e) => {
+        if (!editTaskForm.checkValidity()) {
+            editTaskForm.reportValidity();
+        } else {
+            task.title = editTitleInput.value;
+            task.details = editDetailsInput.value;
+            task.dueDate = editDueDateInput.value;
+            task.isImportant = editIsImportantInput.checked;
+
+            console.log(task);
+            console.log(myTaskList);
+
+            closeEditTaskForm();
+            updateTaskDisplay();
+            e.preventDefault();
+        }
+    }); */
+
+
+    editSubmitBtn.onclick = function(e) {
+        if (!editTaskForm.checkValidity()) {
+            editTaskForm.reportValidity();
+        } else {
+            task.title = editTitleInput.value;
+            task.details = editDetailsInput.value;
+            task.dueDate = editDueDateInput.value;
+            task.isImportant = editIsImportantInput.checked;
+
+            console.log(task);
+            console.log(myTaskList);
+
+            closeEditTaskForm();
+            updateTaskDisplay();
+            e.preventDefault();
+        }
+    };
+
+/*     editCancelBtn.addEventListener('click', () => {
+        closeEditTaskForm();
+        showHiddenTask();
+    }); */
+    
+    editCancelBtn.onclick = closeEditTaskForm;
 }
 
 export { toggleComplete, togglePriority, editTask }
+
+// FIGURE OUT WHY SECOND EDIT DOESN'T EDIT THE CORRECT NODE
+
+// EDITING IS ONLY APPLYING TO THE FIRST DIV
+
+// SECOND CANCEL ALSO IS NOT WORKING
