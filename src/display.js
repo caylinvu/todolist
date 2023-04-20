@@ -61,9 +61,13 @@ function displayTask(task, index) {
     taskDiv.classList.add('task-div');
     toDoContainer.appendChild(taskDiv);
 
+    const taskMain = document.createElement('div');
+    taskMain.classList.add('task-main');
+    taskDiv.appendChild(taskMain);
+
     const taskLeft = document.createElement('div');
     taskLeft.classList.add('task-left');
-    taskDiv.appendChild(taskLeft);
+    taskMain.appendChild(taskLeft);
 
     const taskStatus = document.createElement('div');
     taskStatus.classList.add('task-status');
@@ -91,7 +95,7 @@ function displayTask(task, index) {
     
     const taskRight = document.createElement('div');
     taskRight.classList.add('task-right');
-    taskDiv.appendChild(taskRight);
+    taskMain.appendChild(taskRight);
 
     const dueDateDisplay = document.createElement('div');
     taskRight.appendChild(dueDateDisplay);
@@ -141,6 +145,19 @@ function displayTask(task, index) {
     taskDeleteBtn.appendChild(deleteBtnImg);
 
     taskDeleteBtn.onclick = deleteTask.bind(this, task, index);
+
+    taskDiv.onclick = displayDetails.bind(this, task, taskDiv);
+}
+
+function displayDetails(task, taskDiv) {
+    if (taskDiv.lastChild.className != 'details-display' && task.details) {
+        const detailsDisplay = document.createElement('div');
+        detailsDisplay.classList.add('details-display');
+        detailsDisplay.textContent = task.details;
+        taskDiv.appendChild(detailsDisplay);
+    } else if (taskDiv.lastChild.className === 'details-display' && task.details) {
+        taskDiv.removeChild(taskDiv.lastChild);
+    }
 }
 
 // function to clear display 
