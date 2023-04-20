@@ -144,11 +144,12 @@ function displayTask(task, index) {
     deleteBtnImg.src = './images/trash.svg';
     taskDeleteBtn.appendChild(deleteBtnImg);
 
-    taskDeleteBtn.onclick = deleteTask.bind(this, task, index);
+    taskDeleteBtn.onclick = deleteTask.bind(this, index);
 
     taskDiv.onclick = displayDetails.bind(this, task, taskDiv);
 }
 
+// function to display task details
 function displayDetails(task, taskDiv) {
     if (taskDiv.lastChild.className != 'details-display' && task.details) {
         const detailsDisplay = document.createElement('div');

@@ -9,7 +9,17 @@ const editIsImportantInput = document.getElementById('edit-is-important');
 const editSubmitBtn = document.querySelector('.edit-submit-btn');
 const editCancelBtn = document.querySelector('.edit-cancel-btn');
 
+// function to ignore taskDiv onclick event when buttons within the taskDiv are clicked
+function ignoreEvent(e) {
+    if (!e) {
+        e = window.event;
+    }
+    e.stopPropagation();
+}
+
 function toggleComplete(status, statusContainer, title, task) {
+    ignoreEvent();
+
     if (status.classList.value === 'task-incomplete') {
         status.classList.toggle('task-incomplete');
         statusContainer.removeChild(statusContainer.lastChild);
@@ -36,6 +46,8 @@ function toggleComplete(status, statusContainer, title, task) {
 }
 
 function togglePriority(statusContainer, task) {
+    ignoreEvent();
+
     if (statusContainer.classList.value === 'priority-status priority') {
         statusContainer.classList.toggle('priority');
         statusContainer.classList.toggle('no-priority');
@@ -93,6 +105,8 @@ function autofillTaskInfo(task) {
 }
 
 function editTask(task, taskDiv, toDoContainer) {
+    ignoreEvent();
+
     if (editTaskForm.style.display === 'none') {
         taskDiv.classList.toggle('editing-task');
         openEditTaskForm();
@@ -123,7 +137,8 @@ function editTask(task, taskDiv, toDoContainer) {
     editCancelBtn.onclick = closeEditTaskForm;
 }
 
-function deleteTask(task, index) {
+function deleteTask(index) {
+    ignoreEvent();
     myTaskList.splice(index, 1);
     updateTaskDisplay();
 }

@@ -34,3 +34,5 @@ export { allTasks, today, thisWeek, important, tabs }
 // FINISH UI
 
 // ADD MOBILE SUPPORT
+
+// ADD NOTE SAYING U CAN CLICK TASK TO SHOW DETAILS
