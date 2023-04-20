@@ -1,6 +1,6 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
 import { myTaskList, clearTaskForm } from './createTask';
-import { toggleComplete, togglePriority, editTask } from './editTask';
+import { toggleComplete, togglePriority, editTask, deleteTask } from './editTask';
 
 const mainContent = document.querySelector('.main-content');
 const contentHeader = document.querySelector('.content-heading');
@@ -139,6 +139,8 @@ function displayTask(task, index) {
     const deleteBtnImg = document.createElement('img');
     deleteBtnImg.src = './images/trash.svg';
     taskDeleteBtn.appendChild(deleteBtnImg);
+
+    taskDeleteBtn.onclick = deleteTask.bind(this, task, index);
 }
 
 // function to clear display 

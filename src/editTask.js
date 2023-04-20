@@ -93,7 +93,6 @@ function autofillTaskInfo(task) {
 }
 
 function editTask(task, taskDiv, toDoContainer) {
-    console.log(task.title);
     if (editTaskForm.style.display === 'none') {
         taskDiv.classList.toggle('editing-task');
         openEditTaskForm();
@@ -106,25 +105,6 @@ function editTask(task, taskDiv, toDoContainer) {
         autofillTaskInfo(task);
     }
 
-/*     editSubmitBtn.addEventListener('click', (e) => {
-        if (!editTaskForm.checkValidity()) {
-            editTaskForm.reportValidity();
-        } else {
-            task.title = editTitleInput.value;
-            task.details = editDetailsInput.value;
-            task.dueDate = editDueDateInput.value;
-            task.isImportant = editIsImportantInput.checked;
-
-            console.log(task);
-            console.log(myTaskList);
-
-            closeEditTaskForm();
-            updateTaskDisplay();
-            e.preventDefault();
-        }
-    }); */
-
-
     editSubmitBtn.onclick = function(e) {
         if (!editTaskForm.checkValidity()) {
             editTaskForm.reportValidity();
@@ -134,27 +114,18 @@ function editTask(task, taskDiv, toDoContainer) {
             task.dueDate = editDueDateInput.value;
             task.isImportant = editIsImportantInput.checked;
 
-            console.log(task);
-            console.log(myTaskList);
-
             closeEditTaskForm();
             updateTaskDisplay();
             e.preventDefault();
         }
     };
-
-/*     editCancelBtn.addEventListener('click', () => {
-        closeEditTaskForm();
-        showHiddenTask();
-    }); */
     
     editCancelBtn.onclick = closeEditTaskForm;
 }
 
-export { toggleComplete, togglePriority, editTask }
+function deleteTask(task, index) {
+    myTaskList.splice(index, 1);
+    updateTaskDisplay();
+}
 
-// FIGURE OUT WHY SECOND EDIT DOESN'T EDIT THE CORRECT NODE
-
-// EDITING IS ONLY APPLYING TO THE FIRST DIV
-
-// SECOND CANCEL ALSO IS NOT WORKING
+export { toggleComplete, togglePriority, editTask, deleteTask }
