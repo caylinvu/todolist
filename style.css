@@ -126,7 +126,7 @@ button, input {
     gap: 7px;
 }
 
-.task-div,
+.task-main,
 .task-left,
 .task-right,
 .task-status,
@@ -140,6 +140,9 @@ button, input {
 .task-div {
     border: solid 1px var(--text-color);
     border-radius: 5px;
+}
+
+.task-main {
     justify-content: space-between;
     padding: 7px 10px;
     gap: 35px;
@@ -178,6 +181,11 @@ button, input {
 
 .priority-status {
     margin-left: 20px;
+}
+
+.details-display {
+    padding: 0px 60px 5px;
+    font-size: 18px;
 }
 
 .task-div img {
