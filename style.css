@@ -150,6 +150,13 @@ button, input {
 
 .task-div:hover {
     cursor: pointer;
+    background-color: var(--color4);
+    filter: var(--hover-filter);
+}
+
+.task-div:active {
+    transition: .2s;
+    transform: scale(0.993);
 }
 
 .task-left {
