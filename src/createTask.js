@@ -29,6 +29,7 @@ function addTask() {
 
     const newTask = task(title, details, dueDate, isImportant, isComplete);
     myTaskList.push(newTask);
+    // change this to updateTaskDisplay()
     displayAllTasks();
     return newTask;
 }

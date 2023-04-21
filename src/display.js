@@ -1,6 +1,7 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
 import { myTaskList, clearTaskForm } from './createTask';
 import { toggleComplete, togglePriority, editTask, deleteTask } from './editTask';
+import { myProjectList, clearProjectForm } from './createProject';
 
 const mainContent = document.querySelector('.main-content');
 const contentHeader = document.querySelector('.content-heading');
@@ -8,6 +9,9 @@ const toDoContainer = document.querySelector('.todo-container');
 const taskForm = document.querySelector('.task-form');
 const editTaskForm = document.querySelector('.edit-task-form');
 const cancelBtn = document.querySelector('.cancel-btn');
+const projectForm = document.querySelector('.project-form');
+const addProjectBtn = document.querySelector('.project-btn');
+const projectCancelBtn = document.querySelector('.project-cancel-btn');
 
 // highlight the selected navigation tab
 function highlightSelected(selectedTab) {
@@ -29,6 +33,21 @@ function closeTaskForm() {
 }
 
 cancelBtn.onclick = closeTaskForm;
+
+// open/close the form to add new projects
+
+function openProjectForm() {
+    projectForm.style.display = 'block';
+}
+
+function closeProjectForm() {
+    projectForm.style.display = 'none';
+    clearProjectForm();
+}
+
+addProjectBtn.onclick = openProjectForm;
+projectCancelBtn.onclick = closeProjectForm;
+
 
 // create and display the button to add new tasks
 function displayTaskBtn() {
@@ -52,6 +71,18 @@ function displayTaskBtn() {
 function removeTaskBtn() {
     if (mainContent.lastChild.className === 'task-btn') {
         mainContent.removeChild(mainContent.lastChild);
+    }
+}
+
+// function to display task details
+function displayDetails(task, taskDiv) {
+    if (taskDiv.lastChild.className != 'details-display' && task.details) {
+        const detailsDisplay = document.createElement('div');
+        detailsDisplay.classList.add('details-display');
+        detailsDisplay.textContent = task.details;
+        taskDiv.appendChild(detailsDisplay);
+    } else if (taskDiv.lastChild.className === 'details-display' && task.details) {
+        taskDiv.removeChild(taskDiv.lastChild);
     }
 }
 
@@ -147,18 +178,6 @@ function displayTask(task, index) {
     taskDeleteBtn.onclick = deleteTask.bind(this, index);
 
     taskDiv.onclick = displayDetails.bind(this, task, taskDiv);
-}
-
-// function to display task details
-function displayDetails(task, taskDiv) {
-    if (taskDiv.lastChild.className != 'details-display' && task.details) {
-        const detailsDisplay = document.createElement('div');
-        detailsDisplay.classList.add('details-display');
-        detailsDisplay.textContent = task.details;
-        taskDiv.appendChild(detailsDisplay);
-    } else if (taskDiv.lastChild.className === 'details-display' && task.details) {
-        taskDiv.removeChild(taskDiv.lastChild);
-    }
 }
 
 // function to clear display 

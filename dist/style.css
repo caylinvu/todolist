@@ -61,10 +61,11 @@ button, input {
     font-weight: bold;
     border-bottom: solid 2px var(--text-color);
     padding: 10px;
+    margin-bottom: 20px;
 }
 
-.home-links {
-    padding: 20px 0;
+.home {
+    margin-bottom: 20px;
 }
 
 .link, .project-btn, .task-btn {
@@ -252,4 +253,19 @@ button, input {
 
 .editing-task {
     display: none;
+}
+
+/* ---------------ADD PROJECT FORM--------------- */
+
+.project-form {
+    display: none;
+    padding: 0 20px;
+}
+
+.project-name-input {
+    margin-bottom: 10px;
+}
+
+.project-form-btns {
+    text-align: center;
 }
