@@ -77,7 +77,9 @@ button, input {
     border-radius: 5px;
 }
 
-.link:hover, .project-btn:hover {
+.link:hover,
+.project-btn:hover,
+.project-link:hover {
     background-color: var(--color3);
     filter: var(--hover-filter);
     cursor: pointer;
@@ -92,7 +94,15 @@ button, input {
     border: none;
     background-color: inherit;
     width: 100%;
+    padding-left: 30px;
+}
+
+.task-btn {
     margin: 20px 0px;
+}
+
+.project-btn {
+    margin: 10px 0px;
 }
 
 .selected {
@@ -201,9 +211,10 @@ button, input {
     width: 23px;
 }
 
-.task-btn img {
+.task-btn img,
+.project-btn img {
     filter: var(--icon-filter2);
-    width: 30px;
+    width: 29px;
 }
 
 .task-btn:hover {
@@ -268,4 +279,33 @@ button, input {
 
 .project-form-btns {
     text-align: center;
+}
+
+/* ---------------SIDEBAR - PROJECT DISPLAY--------------- */
+
+.project-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 5px 7px 25px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.project-link-btns {
+    display: flex;
+    gap: 3px;
+}
+
+.project-link-btns button {
+    border: none;
+    background-color: inherit;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.project-link img {
+    width: 23px;
+    filter: var(--icon-filter2);
 }

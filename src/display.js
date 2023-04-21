@@ -252,9 +252,11 @@ function displayProject(project, index) {
     projectLink.appendChild(projectNameDisplay);
 
     const projectLinkBtns = document.createElement('div');
+    projectLinkBtns.classList.add('project-link-btns');
     projectLink.appendChild(projectLinkBtns);
 
     const projectEditBtn = document.createElement('button');
+    projectEditBtn.classList.add('project-edit-btn');
     projectLinkBtns.appendChild(projectEditBtn);
 
     const projectEditImg = document.createElement('img');
@@ -262,6 +264,7 @@ function displayProject(project, index) {
     projectEditBtn.appendChild(projectEditImg);
 
     const projectDeleteBtn = document.createElement('button');
+    projectDeleteBtn.classList.add('project-delete-btn');
     projectLinkBtns.appendChild(projectDeleteBtn);
 
     const projectDeleteImg = document.createElement('img');
