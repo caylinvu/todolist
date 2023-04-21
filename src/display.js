@@ -242,7 +242,7 @@ function updateTaskDisplay() {
     }
 }
 
-function displayProject(project, index) {
+function displayProject(project) {
     const projectLink = document.createElement('div');
     projectLink.classList.add('project-link');
     projectLinkContainer.appendChild(projectLink);
@@ -270,19 +270,23 @@ function displayProject(project, index) {
     const projectDeleteImg = document.createElement('img');
     projectDeleteImg.src = './images/trash.svg';
     projectDeleteBtn.appendChild(projectDeleteImg);
-}
 
-function clearProjectDisplay() {
-    while (projectLinkContainer.firstChild) {
-        projectLinkContainer.removeChild(projectLinkContainer.firstChild);
+    tabs.push(projectLink);
+
+    projectLink.onclick = function() {
+        removeTaskBtn();
+        displayTaskBtn();
+        highlightSelected(projectLink);
+        contentHeader.textContent = projectLink.firstChild.textContent;
+
+        closeTaskForm();
     }
 }
 
-function updateProjectDisplay() {
-    clearProjectDisplay();
-
-    myProjectList.forEach((project, index) => {
-        displayProject(project, index);
+// CAN REMOVE THIS ONCE FINISHED AND DELETE TEST PROJECTS
+function initialProjectDisplay() {
+    myProjectList.forEach((project) => {
+        displayProject(project);
     });
 }
 
@@ -294,7 +298,6 @@ function displayAllTasks() {
     contentHeader.textContent = 'All Tasks';
     updateTaskDisplay();
     closeTaskForm();
-    updateProjectDisplay();
 }
 
 function displayToday() {
@@ -321,4 +324,4 @@ function displayImportant() {
     closeTaskForm();
 }
 
-export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm, updateTaskDisplay, closeProjectForm, updateProjectDisplay }
+export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm, updateTaskDisplay, closeProjectForm, initialProjectDisplay, displayProject }

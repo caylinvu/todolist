@@ -1,4 +1,4 @@
-import { displayAllTasks, displayToday, displayThisWeek, displayImportant } from './display';
+import { displayAllTasks, displayToday, displayThisWeek, displayImportant, initialProjectDisplay } from './display';
 
 const allTasks = document.getElementById('all-tasks');
 const today = document.getElementById('today');
@@ -6,6 +6,7 @@ const thisWeek = document.getElementById('this-week');
 const important = document.getElementById('important');
 const tabs = [allTasks, today, thisWeek, important];
 
+initialProjectDisplay();
 displayAllTasks();
 
 allTasks.addEventListener('click', displayAllTasks);

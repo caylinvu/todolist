@@ -115,6 +115,8 @@ button, input {
     filter: var(--hover-filter);
 }
 
+
+
 /* ---------------MAIN CONTENT--------------- */
 
 .main-content {
@@ -188,7 +190,7 @@ button, input {
 }
 
 .task-right button:hover {
-    background-color: var(--color4);
+    background-color: var(--color5);
     filter: var(--hover-filter);
     cursor: pointer;
     border-radius: 5px;
@@ -290,7 +292,7 @@ button, input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 7px 10px 7px 25px;
+    padding: 7.5px 10px 7.5px 25px;
     margin-bottom: 5px;
     border-radius: 5px;
 }
@@ -313,6 +315,12 @@ button, input {
     filter: var(--hover-filter);
     background-color: var(--color3);
     border-radius: 5px;
+}
+
+.selected .project-edit-btn:hover,
+.selected .project-delete-btn:hover {
+    background: var(--color2);
+    filter: var(--hover-filter);
 }
 
 .project-link img {

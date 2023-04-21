@@ -1,4 +1,4 @@
-import { closeProjectForm, updateProjectDisplay } from "./display";
+import { closeProjectForm, displayProject } from "./display";
 
 const projectForm = document.querySelector('.project-form');
 const projectNameInput = document.getElementById('project-name');
@@ -17,9 +17,7 @@ function addProject() {
 
     const newProject = project(name);
     myProjectList.push(newProject);
-    console.log(newProject);
-    console.log(myProjectList);
-    updateProjectDisplay();
+    displayProject(newProject);
     return newProject;
 }
 
