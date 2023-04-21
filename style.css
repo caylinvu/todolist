@@ -3,6 +3,7 @@
     --color2: #FFABAB;
     --color3: #ffcece;
     --color4: #FEF2F4;
+    --color5: #FFE3E3;
     --text-color: #575757;
     --icon-filter1: invert(53%) sepia(63%) saturate(3230%) hue-rotate(311deg) brightness(84%) contrast(93%);
     --icon-filter2: invert(33%) sepia(2%) saturate(10%) hue-rotate(352deg) brightness(90%) contrast(77%);
@@ -161,8 +162,7 @@ button, input {
 
 .task-div:hover {
     cursor: pointer;
-    background-color: var(--color4);
-    filter: var(--hover-filter);
+    background-color: var(--color5);
 }
 
 .task-div:active {
@@ -191,6 +191,7 @@ button, input {
     background-color: var(--color4);
     filter: var(--hover-filter);
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .task-incomplete:hover {
@@ -228,8 +229,7 @@ button, input {
 .task-form {
     padding: 20px;
     display: none;
-    background-color: var(--color4);
-    filter: brightness(105%);
+    background-color: var(--color5);
     margin-top: 27px;
     border-radius: 5px;
 }
@@ -270,7 +270,10 @@ button, input {
 
 .project-form {
     display: none;
-    padding: 0 20px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: var(--color5);
+    border-radius: 5px;
 }
 
 .project-name-input {
@@ -287,7 +290,7 @@ button, input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 7px 5px 7px 25px;
+    padding: 7px 10px 7px 25px;
     margin-bottom: 5px;
     border-radius: 5px;
 }
@@ -303,6 +306,13 @@ button, input {
     padding: 3px;
     display: flex;
     align-items: center;
+}
+
+.project-link-btns button:hover {
+    cursor: pointer;
+    filter: var(--hover-filter);
+    background-color: var(--color3);
+    border-radius: 5px;
 }
 
 .project-link img {
