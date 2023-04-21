@@ -1,5 +1,7 @@
-import { closeTaskForm, displayAllTasks } from "./display";
+import { closeTaskForm, updateTaskDisplay } from "./display";
+import { myProjectList } from "./createProject";
 
+const contentHeader = document.querySelector('.content-heading');
 const titleInput = document.getElementById('title');
 const detailsInput = document.getElementById('details');
 const dueDateInput = document.getElementById('due-date');
@@ -8,7 +10,7 @@ const addTaskForm = document.querySelector('.task-form');
 const addTaskBtn = document.querySelector('.submit-btn');
 const myTaskList = [];
 
-const task = (title, details, dueDate, isImportant, isComplete) => ({ title, details, dueDate, isImportant, isComplete });
+const task = (title, details, dueDate, isImportant, isComplete, taskProject) => ({ title, details, dueDate, isImportant, isComplete, taskProject });
 
 const testTask = task('This task is due this week', 'Details of the task', '2023-04-22', false, false);
 const testTask2 = task('This task is due today', 'This task has details', '2023-04-20', false, false);
@@ -26,11 +28,17 @@ function addTask() {
     const dueDate = dueDateInput.value;
     const isImportant = isImportantInput.checked;
     const isComplete = false;
+    let taskProject = '';
 
-    const newTask = task(title, details, dueDate, isImportant, isComplete);
+    myProjectList.forEach((project) => {
+        if (contentHeader.textContent === project.name) {
+            taskProject = project.name;
+        }
+    });
+
+    const newTask = task(title, details, dueDate, isImportant, isComplete, taskProject);
     myTaskList.push(newTask);
-    // change this to updateTaskDisplay()
-    displayAllTasks();
+    updateTaskDisplay();
     return newTask;
 }
 
@@ -47,8 +55,6 @@ addTaskBtn.addEventListener('click', (e) => {
     } else {
         addTask();
         closeTaskForm();
-        // REMOVE CLEARING THIS TASK FORM BC CLOSING IT ALREADY CLEARS?????
-        clearTaskForm();
         e.preventDefault();
     }
 });

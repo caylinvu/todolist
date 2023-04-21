@@ -239,6 +239,11 @@ function updateTaskDisplay() {
         tasksImportant.forEach((task, index) => {
             displayTask(task, index);
         });
+    } else {
+        const tasksByProject = myTaskList.filter(task => task.taskProject === contentHeader.textContent);
+        tasksByProject.forEach((task, index) => {
+            displayTask(task, index);
+        })
     }
 }
 
@@ -278,7 +283,7 @@ function displayProject(project) {
         displayTaskBtn();
         highlightSelected(projectLink);
         contentHeader.textContent = projectLink.firstChild.textContent;
-
+        updateTaskDisplay();
         closeTaskForm();
     }
 }
