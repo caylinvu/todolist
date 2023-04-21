@@ -88,7 +88,7 @@ function displayDetails(task, taskDiv) {
 }
 
 // function to display a singular task
-function displayTask(task, index) {
+function displayTask(task) {
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task-div');
     toDoContainer.appendChild(taskDiv);
@@ -176,7 +176,9 @@ function displayTask(task, index) {
     deleteBtnImg.src = './images/trash.svg';
     taskDeleteBtn.appendChild(deleteBtnImg);
 
-    taskDeleteBtn.onclick = deleteTask.bind(this, index);
+    const currentIndex = myTaskList.indexOf(task);
+
+    taskDeleteBtn.onclick = deleteTask.bind(this, currentIndex);
 
     taskDiv.onclick = displayDetails.bind(this, task, taskDiv);
 }
@@ -210,14 +212,14 @@ function updateTaskDisplay() {
     }
 
     if (contentHeader.textContent === 'All Tasks') {
-        myTaskList.forEach((task, index) => {
+        myTaskList.forEach((task) => {
             // console.log(task);
-            displayTask(task, index);
+            displayTask(task);
         });
     } else if (contentHeader.textContent === 'Today') {
         const tasksToday = myTaskList.filter(task => task.dueDate === currentDate);
-        tasksToday.forEach((task, index) => {
-            displayTask(task, index);
+        tasksToday.forEach((task) => {
+            displayTask(task);
         });
     } else if (contentHeader.textContent === 'This Week') {
         const currentWeekEnd = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 7);
@@ -231,18 +233,18 @@ function updateTaskDisplay() {
             return (taskDate >= date && taskDate <= currentWeekEnd) || (task.dueDate === currentDate);
         });
 
-        tasksThisWeek.forEach((task, index) => {
-            displayTask(task, index);
+        tasksThisWeek.forEach((task) => {
+            displayTask(task);
         });
     } else if (contentHeader.textContent === 'Important') {
         const tasksImportant = myTaskList.filter(task => task.isImportant);
-        tasksImportant.forEach((task, index) => {
-            displayTask(task, index);
+        tasksImportant.forEach((task) => {
+            displayTask(task);
         });
     } else {
         const tasksByProject = myTaskList.filter(task => task.taskProject === contentHeader.textContent);
-        tasksByProject.forEach((task, index) => {
-            displayTask(task, index);
+        tasksByProject.forEach((task) => {
+            displayTask(task);
         })
     }
 }

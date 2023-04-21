@@ -18,7 +18,9 @@ export { allTasks, today, thisWeek, important, tabs }
 
 // TO DO
 
-// 
+// FIGURE OUT WHY TASK DELETE BUTTON ISN'T WORKING CORRECTLY
+
+// ADD FUNCTIONALITY TO TASK EDIT AND DELETE BUTTONS!!!!!
 
 
 // ADD AUTO FOCUS TO FORMS
@@ -37,8 +39,13 @@ export { allTasks, today, thisWeek, important, tabs }
 
 // MAYBE ADD DRAG TO REORDER PROJECTS?????
 
+// MAYBE ADD WHERE YOU CAN SORT BY DUE DATE????
+
+
+
 
 // FINISH UI
 
 // ADD MOBILE SUPPORT
 
+// ADD LOCAL STORAGE
