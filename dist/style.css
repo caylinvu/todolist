@@ -95,15 +95,16 @@ button, input {
     border: none;
     background-color: inherit;
     width: 100%;
-    padding-left: 30px;
 }
 
 .task-btn {
     margin: 20px 0px;
+    padding-left: 60px;
 }
 
 .project-btn {
     margin: 10px 0px;
+    padding-left: 30px;
 }
 
 .selected {
@@ -232,7 +233,7 @@ button, input {
     padding: 20px;
     display: none;
     background-color: var(--color5);
-    margin-top: 27px;
+    margin-top: 15px;
     border-radius: 5px;
 }
 

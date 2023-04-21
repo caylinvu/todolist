@@ -18,8 +18,6 @@ export { allTasks, today, thisWeek, important, tabs }
 
 // TO DO
 
-// FIGURE OUT WHY TASK DELETE BUTTON ISN'T WORKING CORRECTLY
-
 // ADD FUNCTIONALITY TO TASK EDIT AND DELETE BUTTONS!!!!!
 
 
