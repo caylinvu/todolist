@@ -272,7 +272,15 @@ function displayProject(project, index) {
     projectDeleteBtn.appendChild(projectDeleteImg);
 }
 
+function clearProjectDisplay() {
+    while (projectLinkContainer.firstChild) {
+        projectLinkContainer.removeChild(projectLinkContainer.firstChild);
+    }
+}
+
 function updateProjectDisplay() {
+    clearProjectDisplay();
+
     myProjectList.forEach((project, index) => {
         displayProject(project, index);
     });
@@ -313,4 +321,4 @@ function displayImportant() {
     closeTaskForm();
 }
 
-export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm, updateTaskDisplay, closeProjectForm }
+export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm, updateTaskDisplay, closeProjectForm, updateProjectDisplay }

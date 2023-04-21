@@ -1,4 +1,4 @@
-import { closeProjectForm } from "./display";
+import { closeProjectForm, updateProjectDisplay } from "./display";
 
 const projectForm = document.querySelector('.project-form');
 const projectNameInput = document.getElementById('project-name');
@@ -19,7 +19,7 @@ function addProject() {
     myProjectList.push(newProject);
     console.log(newProject);
     console.log(myProjectList);
-    // display all projects here
+    updateProjectDisplay();
     return newProject;
 }
 
@@ -34,7 +34,6 @@ projectSubmitBtn.addEventListener('click', (e) => {
         addProject();
         closeProjectForm();
         e.preventDefault();
-
     }
 });
 
