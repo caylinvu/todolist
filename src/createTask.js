@@ -47,6 +47,7 @@ addTaskBtn.addEventListener('click', (e) => {
     } else {
         addTask();
         closeTaskForm();
+        // REMOVE CLEARING THIS TASK FORM BC CLOSING IT ALREADY CLEARS?????
         clearTaskForm();
         e.preventDefault();
     }

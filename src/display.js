@@ -12,6 +12,7 @@ const cancelBtn = document.querySelector('.cancel-btn');
 const projectForm = document.querySelector('.project-form');
 const addProjectBtn = document.querySelector('.project-btn');
 const projectCancelBtn = document.querySelector('.project-cancel-btn');
+const projectLinkContainer = document.querySelector('.project-links');
 
 // highlight the selected navigation tab
 function highlightSelected(selectedTab) {
@@ -241,6 +242,39 @@ function updateTaskDisplay() {
     }
 }
 
+function displayProject(project, index) {
+    const projectLink = document.createElement('div');
+    projectLink.classList.add('project-link');
+    projectLinkContainer.appendChild(projectLink);
+
+    const projectNameDisplay = document.createElement('div');
+    projectNameDisplay.textContent = project.name;
+    projectLink.appendChild(projectNameDisplay);
+
+    const projectLinkBtns = document.createElement('div');
+    projectLink.appendChild(projectLinkBtns);
+
+    const projectEditBtn = document.createElement('button');
+    projectLinkBtns.appendChild(projectEditBtn);
+
+    const projectEditImg = document.createElement('img');
+    projectEditImg.src = './images/edit.svg';
+    projectEditBtn.appendChild(projectEditImg);
+
+    const projectDeleteBtn = document.createElement('button');
+    projectLinkBtns.appendChild(projectDeleteBtn);
+
+    const projectDeleteImg = document.createElement('img');
+    projectDeleteImg.src = './images/trash.svg';
+    projectDeleteBtn.appendChild(projectDeleteImg);
+}
+
+function updateProjectDisplay() {
+    myProjectList.forEach((project, index) => {
+        displayProject(project, index);
+    });
+}
+
 // functions to display appropriate tasks for chosen tab
 function displayAllTasks() {
     removeTaskBtn();
@@ -249,6 +283,7 @@ function displayAllTasks() {
     contentHeader.textContent = 'All Tasks';
     updateTaskDisplay();
     closeTaskForm();
+    updateProjectDisplay();
 }
 
 function displayToday() {
@@ -275,4 +310,4 @@ function displayImportant() {
     closeTaskForm();
 }
 
-export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm, updateTaskDisplay }
+export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm, updateTaskDisplay, closeProjectForm }
