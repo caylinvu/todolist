@@ -2,7 +2,7 @@ import { allTasks, today, thisWeek, important, tabs } from './index';
 import { myTaskList, clearTaskForm } from './createTask';
 import { toggleComplete, togglePriority, editTask, deleteTask } from './editTask';
 import { myProjectList, clearProjectForm } from './createProject';
-import { editProject } from './editProject';
+import { editProject, deleteProject } from './editProject';
 
 const mainContent = document.querySelector('.main-content');
 const contentHeader = document.querySelector('.content-heading');
@@ -292,6 +292,8 @@ function displayProject(project) {
     }
 
     projectEditBtn.onclick = editProject.bind(this, project, projectLink, projectLinkContainer, projectNameDisplay, contentHeader);
+
+    projectDeleteBtn.onclick = deleteProject.bind(this, project, projectLink, projectLinkContainer, contentHeader);
 }
 
 // CAN REMOVE THIS ONCE FINISHED AND DELETE TEST PROJECTS

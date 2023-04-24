@@ -1,4 +1,7 @@
 import { ignoreEvent } from "./editTask";
+import { myProjectList } from "./createProject";
+import { displayAllTasks, updateTaskDisplay } from "./display";
+import { myTaskList } from "./createTask";
 
 const editProjectForm = document.querySelector('.edit-project-form');
 const editProjectNameInput = document.querySelector('.edit-project-name-input');
@@ -62,4 +65,23 @@ function editProject(project, projectLink, projectLinkContainer, projectNameDisp
     editProjectCancelBtn.onclick = closeEditProjectForm;
 }
 
-export { editProject }
+function deleteProject(project, projectLink, projectLinkContainer, contentHeader) {
+    ignoreEvent();
+
+    for (let i = myTaskList.length - 1; i >= 0; i--) {
+        const task = myTaskList[i];
+        if (task.taskProject === project.name) {
+            myTaskList.splice(myTaskList.indexOf(task), 1);
+            updateTaskDisplay();
+        }
+    }
+
+    if (project.name === contentHeader.textContent) {
+        displayAllTasks();
+    }
+
+    myProjectList.splice(myProjectList.indexOf(project), 1);
+    projectLinkContainer.removeChild(projectLink);
+}
+
+export { editProject, deleteProject }
