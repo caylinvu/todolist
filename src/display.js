@@ -2,6 +2,7 @@ import { allTasks, today, thisWeek, important, tabs } from './index';
 import { myTaskList, clearTaskForm } from './createTask';
 import { toggleComplete, togglePriority, editTask, deleteTask } from './editTask';
 import { myProjectList, clearProjectForm } from './createProject';
+import { editProject } from './editProject';
 
 const mainContent = document.querySelector('.main-content');
 const contentHeader = document.querySelector('.content-heading');
@@ -13,6 +14,7 @@ const projectForm = document.querySelector('.project-form');
 const addProjectBtn = document.querySelector('.project-btn');
 const projectCancelBtn = document.querySelector('.project-cancel-btn');
 const projectLinkContainer = document.querySelector('.project-links');
+const editProjectForm = document.querySelector('.edit-project-form');
 
 // highlight the selected navigation tab
 function highlightSelected(selectedTab) {
@@ -288,6 +290,8 @@ function displayProject(project) {
         updateTaskDisplay();
         closeTaskForm();
     }
+
+    projectEditBtn.onclick = editProject.bind(this, project, projectLink, projectLinkContainer, projectNameDisplay, contentHeader);
 }
 
 // CAN REMOVE THIS ONCE FINISHED AND DELETE TEST PROJECTS

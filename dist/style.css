@@ -279,7 +279,8 @@ button, input {
     border-radius: 5px;
 }
 
-.project-name-input {
+.project-name-input,
+.edit-project-name-input {
     margin-bottom: 10px;
 }
 
@@ -327,4 +328,16 @@ button, input {
 .project-link img {
     width: 23px;
     filter: var(--icon-filter2);
+}
+
+/* ---------------EDIT PROJECT FORM--------------- */
+
+.edit-project-form {
+    display: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.editing-project {
+    display: none;
 }

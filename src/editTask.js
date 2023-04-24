@@ -143,4 +143,4 @@ function deleteTask(index) {
     updateTaskDisplay();
 }
 
-export { toggleComplete, togglePriority, editTask, deleteTask }
+export { toggleComplete, togglePriority, editTask, deleteTask, ignoreEvent }
