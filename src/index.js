@@ -18,7 +18,6 @@ export { allTasks, today, thisWeek, important, tabs }
 
 // TO DO
 
-// ADD FUNCTIONALITY TO TASK EDIT AND DELETE BUTTONS!!!!!
 
 
 // ADD AUTO FOCUS TO FORMS
@@ -39,6 +38,7 @@ export { allTasks, today, thisWeek, important, tabs }
 
 // MAYBE ADD WHERE YOU CAN SORT BY DUE DATE????
 
+// MOVE TASK TO BOTTOM IF COMPLETED???
 
 
 

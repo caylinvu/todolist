@@ -15,6 +15,8 @@ const addProjectBtn = document.querySelector('.project-btn');
 const projectCancelBtn = document.querySelector('.project-cancel-btn');
 const projectLinkContainer = document.querySelector('.project-links');
 const editProjectForm = document.querySelector('.edit-project-form');
+const titleInput = document.getElementById('title');
+const projectNameInput = document.getElementById('project-name');
 
 // highlight the selected navigation tab
 function highlightSelected(selectedTab) {
@@ -28,6 +30,7 @@ function highlightSelected(selectedTab) {
 // open/close the form to add new tasks
 function openTaskForm() {
     taskForm.style.display = 'block';
+    titleInput.focus();
 }
 
 function closeTaskForm() {
@@ -41,6 +44,7 @@ cancelBtn.onclick = closeTaskForm;
 
 function openProjectForm() {
     projectForm.style.display = 'block';
+    projectNameInput.focus();
 }
 
 function closeProjectForm() {
@@ -126,6 +130,14 @@ function displayTask(task) {
     }
 
     taskStatus.onclick = toggleComplete.bind(this, taskIncomplete, taskStatus, titleDisplay, task);
+
+    if (task.details) {
+        const expandTask = document.createElement('img');
+        expandTask.src = './images/expand.svg';
+        taskLeft.appendChild(expandTask);
+        expandTask.title = 'Click task to show details';
+        expandTask.classList.add('expand-task');
+    }
     
     const taskRight = document.createElement('div');
     taskRight.classList.add('task-right');
