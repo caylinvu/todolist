@@ -260,8 +260,11 @@ button, input {
     padding: 10px 0 20px;
 }
 
-.task-form-btns {
-    text-align: center;
+.task-form-btns,
+.project-form-btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 /* ---------------EDIT TASK FORM--------------- */
@@ -288,10 +291,6 @@ button, input {
 .project-name-input,
 .edit-project-name-input {
     margin-bottom: 10px;
-}
-
-.project-form-btns {
-    text-align: center;
 }
 
 /* ---------------SIDEBAR - PROJECT DISPLAY--------------- */
@@ -353,11 +352,32 @@ button, input {
     display: none;
 }
 
-/* ---------------FORM INPUTS--------------- */
+/* ---------------FORM INPUTS/BUTTONS--------------- */
 
 input {
     border: 1px solid var(--text-color);
     border-radius: 3px;
     padding: 5px 7px;
+    font-size: 19px;
 }
 
+.task-form button,
+.edit-task-form button,
+.project-form button,
+.edit-project-form button {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color2);
+    padding: 5px 7px;
+    width: 85px;
+    font-size: 18px;
+}
+
+.task-form button:hover,
+.edit-task-form button:hover,
+.project-form button:hover,
+.edit-project-form button:hover {
+    cursor: pointer;
+    filter: var(--hover-filter);
+    transition: .2s;
+}
