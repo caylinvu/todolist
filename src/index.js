@@ -18,12 +18,6 @@ export { allTasks, today, thisWeek, important, tabs }
 
 // TO DO
 
-
-
-// ADD AUTO FOCUS TO FORMS
-
-// ADD PLACEHOLDERS ON FORMS
-
 // ADD CHARACTER LIMIT TO FORM FIELDS
 
 // MAYBE CHANGE EDIT SUBMIT BUTTON TO SAY "UPDATE"
