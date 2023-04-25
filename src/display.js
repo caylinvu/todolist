@@ -133,7 +133,7 @@ function displayTask(task) {
 
     if (task.details) {
         const expandTask = document.createElement('img');
-        expandTask.src = './images/expand.svg';
+        expandTask.src = './images/expand-task.svg';
         taskLeft.appendChild(expandTask);
         expandTask.title = 'Click task to show details';
         expandTask.classList.add('expand-task');

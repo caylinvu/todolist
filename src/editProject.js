@@ -39,11 +39,13 @@ function editProject(project, projectLink, projectLinkContainer, projectNameDisp
         openEditProjectForm();
         projectLinkContainer.insertBefore(editProjectForm, projectLink);
         autofillProjectInfo(project);
+        editProjectNameInput.focus();
     } else {
         showHiddenProject();
         projectLink.classList.toggle('editing-project');
         projectLinkContainer.insertBefore(editProjectForm, projectLink);
         autofillProjectInfo(project);
+        editProjectNameInput.focus();
     }
 
     editProjectSubmitBtn.onclick = function(e) {

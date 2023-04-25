@@ -73,6 +73,7 @@ function togglePriority(statusContainer, task) {
 
 function openEditTaskForm() {
     editTaskForm.style.display = 'block';
+    editTitleInput.focus();
 }
 
 function clearEditTaskForm() {
@@ -112,11 +113,13 @@ function editTask(task, taskDiv, toDoContainer) {
         openEditTaskForm();
         toDoContainer.insertBefore(editTaskForm, taskDiv);
         autofillTaskInfo(task);
+        editTitleInput.focus();
     } else {
         showHiddenTask();
         taskDiv.classList.toggle('editing-task');
         toDoContainer.insertBefore(editTaskForm, taskDiv);
         autofillTaskInfo(task);
+        editTitleInput.focus();
     }
 
     editSubmitBtn.onclick = function(e) {
