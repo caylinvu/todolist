@@ -32,6 +32,7 @@ export { allTasks, today, thisWeek, important, tabs }
 
 // MOVE TASK TO BOTTOM IF COMPLETED???
 
+// figure out how to wrap long words on resize????
 
 
 // FINISH UI

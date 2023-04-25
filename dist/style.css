@@ -178,6 +178,11 @@ button, input {
     min-width: 150px;
 }
 
+.title-display,
+.details-display {
+    word-break: break-word;
+}
+
 .task-right {
     gap: 7px;
     font-size: 18px;
@@ -300,6 +305,11 @@ button, input {
     border-radius: 5px;
 }
 
+.project-name-display {
+    overflow-wrap: break-word;
+    max-width: 195px;
+}
+
 .project-link-btns {
     display: flex;
     gap: 3px;
@@ -342,3 +352,12 @@ button, input {
 .editing-project {
     display: none;
 }
+
+/* ---------------FORM INPUTS--------------- */
+
+input {
+    border: 1px solid var(--text-color);
+    border-radius: 3px;
+    padding: 5px 7px;
+}
+

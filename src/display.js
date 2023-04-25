@@ -119,6 +119,7 @@ function displayTask(task) {
     taskComplete.src = './images/circle-filled.svg';
 
     const titleDisplay = document.createElement('div');
+    titleDisplay.classList.add('title-display');
     titleDisplay.textContent = task.title;
     taskLeft.appendChild(titleDisplay);
 
@@ -269,6 +270,7 @@ function displayProject(project) {
     projectLinkContainer.appendChild(projectLink);
 
     const projectNameDisplay = document.createElement('div');
+    projectNameDisplay.classList.add('project-name-display');
     projectNameDisplay.textContent = project.name;
     projectLink.appendChild(projectNameDisplay);
 
