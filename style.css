@@ -197,7 +197,8 @@ button, input {
     border-radius: 5px;
 }
 
-.task-incomplete:hover {
+.task-incomplete:hover,
+.expand-task:hover {
     filter: var(--hover-filter);
 }
 
