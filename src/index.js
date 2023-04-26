@@ -18,18 +18,12 @@ export { allTasks, today, thisWeek, important, tabs }
 
 // TO DO
 
-// UPDATE FORM UI FOR INPUTS AND INPUT BUTTON SIZES
 
 // MAYBE INVERT COLORS ON EDIT AND TRASH BUTTONS ON SIDEBAR
-
-// MAYBE ADD DRAG TO REORDER PROJECTS?????
 
 // MAYBE ADD WHERE YOU CAN SORT BY DUE DATE????
 
 // MOVE TASK TO BOTTOM IF COMPLETED???
-
-// figure out how to wrap long words on resize????
-
 
 // FINISH UI
 

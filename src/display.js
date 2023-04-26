@@ -95,6 +95,9 @@ function displayDetails(task, taskDiv) {
 
 // function to display a singular task
 function displayTask(task) {
+    console.log(task);
+    console.log(task.isComplete);
+
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task-div');
     toDoContainer.appendChild(taskDiv);
@@ -112,7 +115,7 @@ function displayTask(task) {
     taskLeft.appendChild(taskStatus);
 
     const taskIncomplete = document.createElement('img');
-    taskIncomplete.classList.add('task-incomplete');
+    // taskIncomplete.classList.add('task-incomplete');
     taskIncomplete.src = './images/circle-unfilled.svg';
 
     const taskComplete = document.createElement('img');
@@ -123,11 +126,14 @@ function displayTask(task) {
     titleDisplay.textContent = task.title;
     taskLeft.appendChild(titleDisplay);
 
+    console.log(taskIncomplete.classList.value);
+
     if (task.isComplete) {
-    taskStatus.appendChild(taskComplete);
-    titleDisplay.style.setProperty('text-decoration', 'line-through');
+        taskStatus.appendChild(taskComplete);
+        titleDisplay.style.setProperty('text-decoration', 'line-through');
     } else {
         taskStatus.appendChild(taskIncomplete);
+        taskIncomplete.classList.add('task-incomplete');
     }
 
     taskStatus.onclick = toggleComplete.bind(this, taskIncomplete, taskStatus, titleDisplay, task);

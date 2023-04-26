@@ -20,7 +20,11 @@ function ignoreEvent(e) {
 function toggleComplete(status, statusContainer, title, task) {
     ignoreEvent();
 
+    console.log(status.classList.value);
+    console.log(task.isComplete);
+
     if (status.classList.value === 'task-incomplete') {
+        // console.log(status);
         status.classList.toggle('task-incomplete');
         statusContainer.removeChild(statusContainer.lastChild);
 
@@ -31,6 +35,16 @@ function toggleComplete(status, statusContainer, title, task) {
         title.style.setProperty('text-decoration', 'line-through');
 
         task.isComplete = true;
+        // console.log(myTaskList.indexOf(task));
+
+        myTaskList.push(myTaskList.splice(myTaskList.indexOf(task), 1)[0]);
+        // status.classList.toggle('task-incomplete');
+        // console.log(status.classList.value);
+        // console.log(status);
+
+        updateTaskDisplay();
+        // console.log(status.classList.value);
+        // console.log(task.isComplete);
     } else {
         status.classList.toggle('task-incomplete');
         statusContainer.removeChild(statusContainer.lastChild);
