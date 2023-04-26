@@ -8,6 +8,7 @@ const editDueDateInput = document.getElementById('edit-due-date');
 const editIsImportantInput = document.getElementById('edit-is-important');
 const editSubmitBtn = document.querySelector('.edit-submit-btn');
 const editCancelBtn = document.querySelector('.edit-cancel-btn');
+const isCompleteArray = [];
 
 // function to ignore taskDiv onclick event when buttons within the taskDiv are clicked
 function ignoreEvent(e) {
@@ -20,11 +21,7 @@ function ignoreEvent(e) {
 function toggleComplete(status, statusContainer, title, task) {
     ignoreEvent();
 
-    console.log(status.classList.value);
-    console.log(task.isComplete);
-
     if (status.classList.value === 'task-incomplete') {
-        // console.log(status);
         status.classList.toggle('task-incomplete');
         statusContainer.removeChild(statusContainer.lastChild);
 
@@ -35,17 +32,11 @@ function toggleComplete(status, statusContainer, title, task) {
         title.style.setProperty('text-decoration', 'line-through');
 
         task.isComplete = true;
-        // console.log(myTaskList.indexOf(task));
 
-        myTaskList.push(myTaskList.splice(myTaskList.indexOf(task), 1)[0]);
+        isCompleteArray.push(myTaskList.splice(myTaskList.indexOf(task), 1)[0]);
 
-        // status.classList.toggle('task-incomplete');
-        // console.log(status.classList.value);
-        // console.log(status);
+        updateTaskDisplay();
 
-        // updateTaskDisplay();
-        // console.log(status.classList.value);
-        // console.log(task.isComplete);
     } else {
         status.classList.toggle('task-incomplete');
         statusContainer.removeChild(statusContainer.lastChild);
@@ -58,7 +49,9 @@ function toggleComplete(status, statusContainer, title, task) {
 
         task.isComplete = false;
 
-        // updateTaskDisplay();
+        isCompleteArray.splice(isCompleteArray.indexOf(task), 1);
+
+        updateTaskDisplay();
     }
 }
 
@@ -163,4 +156,4 @@ function deleteTask(index) {
     updateTaskDisplay();
 }
 
-export { toggleComplete, togglePriority, editTask, deleteTask, ignoreEvent }
+export { toggleComplete, togglePriority, editTask, deleteTask, ignoreEvent, isCompleteArray }

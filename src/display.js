@@ -1,6 +1,6 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
 import { myTaskList, clearTaskForm } from './createTask';
-import { toggleComplete, togglePriority, editTask, deleteTask } from './editTask';
+import { toggleComplete, togglePriority, editTask, deleteTask, isCompleteArray } from './editTask';
 import { myProjectList, clearProjectForm } from './createProject';
 import { editProject, deleteProject } from './editProject';
 
@@ -215,14 +215,14 @@ function clearDisplay() {
 // function to update the task list display
 function updateTaskDisplay() {
     clearDisplay();
-    
-    // for (let i = myTaskList.length - 1; i >= 0; i--) {
-    //     const task = myTaskList[i];
-    //     if (!task.dueDate) {
-    //         myTaskList.push(myTaskList.splice(myTaskList.indexOf(task), 1)[0]);
-    //     }
-    // }
-    
+    // const isCompleteArray = [];
+    for (let i = myTaskList.length - 1; i >= 0; i--) {
+        const task = myTaskList[i];
+        if (task.isComplete) {
+            myTaskList.splice(myTaskList.indexOf(task), 1);
+        }
+    }
+
     myTaskList.sort((a, b) => {
         let x;
         let y;
@@ -243,6 +243,8 @@ function updateTaskDisplay() {
         if (x > y) return 1;
         return 0;
     });
+
+    myTaskList.push.apply(myTaskList, isCompleteArray);
 
     // move complete tasks to the bottom of list
     // for (let i = myTaskList.length - 1; i >= 0; i--) {
