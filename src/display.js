@@ -95,9 +95,6 @@ function displayDetails(task, taskDiv) {
 
 // function to display a singular task
 function displayTask(task) {
-    console.log(task);
-    console.log(task.isComplete);
-
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task-div');
     toDoContainer.appendChild(taskDiv);
@@ -125,8 +122,6 @@ function displayTask(task) {
     titleDisplay.classList.add('title-display');
     titleDisplay.textContent = task.title;
     taskLeft.appendChild(titleDisplay);
-
-    console.log(taskIncomplete.classList.value);
 
     if (task.isComplete) {
         taskStatus.appendChild(taskComplete);
@@ -220,7 +215,43 @@ function clearDisplay() {
 // function to update the task list display
 function updateTaskDisplay() {
     clearDisplay();
+    
+    // for (let i = myTaskList.length - 1; i >= 0; i--) {
+    //     const task = myTaskList[i];
+    //     if (!task.dueDate) {
+    //         myTaskList.push(myTaskList.splice(myTaskList.indexOf(task), 1)[0]);
+    //     }
+    // }
+    
+    myTaskList.sort((a, b) => {
+        let x;
+        let y;
 
+        if (!a.dueDate) {
+            x = new Date('100000');
+        } else {
+            x = new Date(a.dueDate);
+        }
+
+        if (!b.dueDate) {
+            y = new Date('100000');
+        } else {
+            y = new Date(b.dueDate);
+        }
+
+        if (x < y) return -1;
+        if (x > y) return 1;
+        return 0;
+    });
+
+    // move complete tasks to the bottom of list
+    // for (let i = myTaskList.length - 1; i >= 0; i--) {
+    //     const task = myTaskList[i];
+    //     if (task.isComplete) {
+    //         myTaskList.push(myTaskList.splice(myTaskList.indexOf(task), 1)[0]);
+    //     }
+    // }
+    
     const date = new Date();
     const day = date.getDate();
     const month = date.getMonth() + 1;

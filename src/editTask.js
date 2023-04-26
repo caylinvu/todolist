@@ -38,11 +38,12 @@ function toggleComplete(status, statusContainer, title, task) {
         // console.log(myTaskList.indexOf(task));
 
         myTaskList.push(myTaskList.splice(myTaskList.indexOf(task), 1)[0]);
+
         // status.classList.toggle('task-incomplete');
         // console.log(status.classList.value);
         // console.log(status);
 
-        updateTaskDisplay();
+        // updateTaskDisplay();
         // console.log(status.classList.value);
         // console.log(task.isComplete);
     } else {
@@ -56,6 +57,8 @@ function toggleComplete(status, statusContainer, title, task) {
         title.style.setProperty('text-decoration', 'none');
 
         task.isComplete = false;
+
+        // updateTaskDisplay();
     }
 }
 
