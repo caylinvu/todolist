@@ -1,4 +1,4 @@
-import { myTaskList } from "./createTask";
+import { myTaskList , saveToLocalStorage } from "./createTask";
 import { updateTaskDisplay } from "./display";
 
 const editTaskForm = document.querySelector('.edit-task-form');
@@ -17,6 +17,10 @@ function ignoreEvent(e) {
     }
     e.stopPropagation();
 }
+
+// function statusToLocalStorage() {
+//     localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
+// }
 
 function toggleComplete(status, statusContainer, title, task) {
     ignoreEvent();
@@ -53,6 +57,7 @@ function toggleComplete(status, statusContainer, title, task) {
 
         updateTaskDisplay();
     }
+    // saveToLocalStorage();
 }
 
 function togglePriority(statusContainer, task) {
@@ -150,9 +155,17 @@ function editTask(task, taskDiv, toDoContainer) {
     editCancelBtn.onclick = closeEditTaskForm;
 }
 
-function deleteTask(index) {
+function deleteTask(index, task) {
     ignoreEvent();
     myTaskList.splice(index, 1);
+    // console.log(isCompleteArray);
+    // console.log(task);
+    // console.log(isCompleteArray.includes(task));
+
+    if (isCompleteArray.includes(task)) {
+        isCompleteArray.splice(isCompleteArray.indexOf(task), 1);
+    }
+
     updateTaskDisplay();
 }
 

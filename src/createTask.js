@@ -1,5 +1,7 @@
 import { closeTaskForm, updateTaskDisplay } from "./display";
 import { myProjectList } from "./createProject";
+import { getLocalStorage } from ".";
+import { isCompleteArray } from "./editTask";
 
 const contentHeader = document.querySelector('.content-heading');
 const titleInput = document.getElementById('title');
@@ -29,6 +31,17 @@ const testTask14 = task('READING TASK 2', '', '2023-09-10', false, false, 'Readi
 
 myTaskList.push(testTask, testTask2, testTask3, testTask4, testTask5, testTask6, testTask7, testTask8, testTask9, testTask10, testTask11, testTask12, testTask13, testTask14);
 
+// localStorage.clear();
+// console.log(localStorage);
+
+function saveToLocalStorage() {
+    localStorage.setItem("myTaskList", JSON.stringify(myTaskList));
+    localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
+    localStorage.setItem("myProjectList", JSON.stringify(myProjectList));
+
+    getLocalStorage();
+}
+
 function addTask() {
     const title = titleInput.value;
     const details = detailsInput.value;
@@ -46,6 +59,7 @@ function addTask() {
     const newTask = task(title, details, dueDate, isImportant, isComplete, taskProject);
     myTaskList.push(newTask);
     updateTaskDisplay();
+    saveToLocalStorage();
     return newTask;
 }
 
@@ -66,4 +80,4 @@ addTaskBtn.addEventListener('click', (e) => {
     }
 });
 
-export { myTaskList, clearTaskForm }
+export { myTaskList, clearTaskForm, saveToLocalStorage }

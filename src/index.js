@@ -1,4 +1,7 @@
-import { displayAllTasks, displayToday, displayThisWeek, displayImportant, initialProjectDisplay } from './display';
+import { displayAllTasks, displayToday, displayThisWeek, displayImportant, initialProjectDisplay, updateTaskDisplay } from './display';
+import { myTaskList } from './createTask';
+import { myProjectList } from './createProject';
+import { isCompleteArray } from './editTask';
 
 const allTasks = document.getElementById('all-tasks');
 const today = document.getElementById('today');
@@ -6,6 +9,27 @@ const thisWeek = document.getElementById('this-week');
 const important = document.getElementById('important');
 const tabs = [allTasks, today, thisWeek, important];
 
+// LOCAL STORAGE
+// localStorage.clear();
+
+function getLocalStorage() {
+    const storedTasks = JSON.parse(localStorage.getItem("myTaskList"));
+    myTaskList.length = 0;
+    myTaskList.push.apply(myTaskList, storedTasks);
+    // console.log(storedTasks);
+
+    const storedCompletedTasks = JSON.parse(localStorage.getItem("isCompleteArray"));
+    isCompleteArray.length = 0;
+    isCompleteArray.push.apply(isCompleteArray, storedCompletedTasks);
+    // console.log(storedCompletedTasks);
+
+    const storedProjects = JSON.parse(localStorage.getItem("myProjectList"));
+    myProjectList.length = 0;
+    myProjectList.push.apply(myProjectList, storedProjects);
+    // console.log(storedProjects);
+}
+
+getLocalStorage();
 initialProjectDisplay();
 displayAllTasks();
 
@@ -14,15 +38,12 @@ today.addEventListener('click', displayToday);
 thisWeek.addEventListener('click', displayThisWeek);
 important.addEventListener('click', displayImportant);
 
-export { allTasks, today, thisWeek, important, tabs }
+export { allTasks, today, thisWeek, important, tabs, getLocalStorage }
 
 // TO DO
-
-// MAYBE ADD WHERE YOU CAN SORT BY DUE DATE????
-// SORT BY DUE DATE AT BEGINNING OF UPDATE DISPLAY FUNCTION, THEN PUSH COMPLETED TASKS TO BOTTOM, THEN UPDATE DISPLAY
 
 // FINISH UI
 
 // ADD MOBILE SUPPORT
 
-// ADD LOCAL STORAGE
+// FIX LOCAL STORAGE ISSUE WHEN EDITING TASKS

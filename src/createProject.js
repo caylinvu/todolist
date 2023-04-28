@@ -1,4 +1,5 @@
 import { closeProjectForm, displayProject } from "./display";
+import { saveToLocalStorage } from "./createTask";
 
 const projectForm = document.querySelector('.project-form');
 const projectNameInput = document.getElementById('project-name');
@@ -18,6 +19,7 @@ function addProject() {
     const newProject = project(name);
     myProjectList.push(newProject);
     displayProject(newProject);
+    saveToLocalStorage();
     return newProject;
 }
 

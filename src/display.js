@@ -1,5 +1,5 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
-import { myTaskList, clearTaskForm } from './createTask';
+import { myTaskList, clearTaskForm, saveToLocalStorage } from './createTask';
 import { toggleComplete, togglePriority, editTask, deleteTask, isCompleteArray } from './editTask';
 import { myProjectList, clearProjectForm } from './createProject';
 import { editProject, deleteProject } from './editProject';
@@ -194,7 +194,7 @@ function displayTask(task) {
 
     const currentIndex = myTaskList.indexOf(task);
 
-    taskDeleteBtn.onclick = deleteTask.bind(this, currentIndex);
+    taskDeleteBtn.onclick = deleteTask.bind(this, currentIndex, task);
 
     taskDiv.onclick = displayDetails.bind(this, task, taskDiv);
 }
@@ -215,7 +215,8 @@ function clearDisplay() {
 // function to update the task list display
 function updateTaskDisplay() {
     clearDisplay();
-    // const isCompleteArray = [];
+
+    // if a task is complete, remove it from the task list
     for (let i = myTaskList.length - 1; i >= 0; i--) {
         const task = myTaskList[i];
         if (task.isComplete) {
@@ -223,6 +224,7 @@ function updateTaskDisplay() {
         }
     }
 
+    // sort the tasks that are incomplete
     myTaskList.sort((a, b) => {
         let x;
         let y;
@@ -244,15 +246,10 @@ function updateTaskDisplay() {
         return 0;
     });
 
+    // append the completed tasks to the bottom of the sorted incomplete tasks
     myTaskList.push.apply(myTaskList, isCompleteArray);
 
-    // move complete tasks to the bottom of list
-    // for (let i = myTaskList.length - 1; i >= 0; i--) {
-    //     const task = myTaskList[i];
-    //     if (task.isComplete) {
-    //         myTaskList.push(myTaskList.splice(myTaskList.indexOf(task), 1)[0]);
-    //     }
-    // }
+    // saveToLocalStorage();
     
     const date = new Date();
     const day = date.getDate();
@@ -267,7 +264,6 @@ function updateTaskDisplay() {
 
     if (contentHeader.textContent === 'All Tasks') {
         myTaskList.forEach((task) => {
-            // console.log(task);
             displayTask(task);
         });
     } else if (contentHeader.textContent === 'Today') {

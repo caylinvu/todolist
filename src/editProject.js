@@ -1,7 +1,7 @@
 import { ignoreEvent } from "./editTask";
 import { myProjectList } from "./createProject";
 import { displayAllTasks, updateTaskDisplay } from "./display";
-import { myTaskList } from "./createTask";
+import { myTaskList , saveToLocalStorage } from "./createTask";
 
 const editProjectForm = document.querySelector('.edit-project-form');
 const editProjectNameInput = document.querySelector('.edit-project-name-input');
