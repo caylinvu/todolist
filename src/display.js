@@ -19,7 +19,7 @@ const projectNameInput = document.getElementById('project-name');
 const menuBtn = document.querySelector('.menu-btn');
 const sidebar = document.querySelector('.sidebar');
 
-// highlight the selected navigation tab
+// Highlight the selected navigation tab
 function highlightSelected(selectedTab) {
     tabs.forEach((tab) => {
         tab.classList.remove('selected');
@@ -28,12 +28,13 @@ function highlightSelected(selectedTab) {
     selectedTab.classList.toggle('selected');
 }
 
-// open/close the form to add new tasks
+// Open form to add new tasks
 function openTaskForm() {
     taskForm.style.display = 'block';
     titleInput.focus();
 }
 
+// Close form to add new tasks
 function closeTaskForm() {
     taskForm.style.display = 'none';
     clearTaskForm();
@@ -41,13 +42,13 @@ function closeTaskForm() {
 
 cancelBtn.onclick = closeTaskForm;
 
-// open/close the form to add new projects
-
+// Open form to add new projects
 function openProjectForm() {
     projectForm.style.display = 'block';
     projectNameInput.focus();
 }
 
+// Close form to add new projects
 function closeProjectForm() {
     projectForm.style.display = 'none';
     clearProjectForm();
@@ -57,7 +58,7 @@ addProjectBtn.onclick = openProjectForm;
 projectCancelBtn.onclick = closeProjectForm;
 
 
-// create and display the button to add new tasks
+// Create and display the button to add new tasks
 function displayTaskBtn() {
     const taskBtn = document.createElement('button');
     taskBtn.classList.add('task-btn');
@@ -75,14 +76,14 @@ function displayTaskBtn() {
     mainContent.appendChild(taskBtn);
 }
 
-// remove the button to add new task (for pages where you cannot add new task)
+// Remove the button to add new task (for filtered pages where you cannot add new task)
 function removeTaskBtn() {
     if (mainContent.lastChild.className === 'task-btn') {
         mainContent.removeChild(mainContent.lastChild);
     }
 }
 
-// function to display task details
+// Display task details 
 function displayDetails(task, taskDiv) {
     if (taskDiv.lastChild.className != 'details-display' && task.details) {
         const detailsDisplay = document.createElement('div');
@@ -94,7 +95,7 @@ function displayDetails(task, taskDiv) {
     }
 }
 
-// function to display a singular task
+// Display a singular task
 function displayTask(task) {
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('task-div');
@@ -113,7 +114,6 @@ function displayTask(task) {
     taskLeft.appendChild(taskStatus);
 
     const taskIncomplete = document.createElement('img');
-    // taskIncomplete.classList.add('task-incomplete');
     taskIncomplete.src = './images/circle-unfilled.svg';
 
     const taskComplete = document.createElement('img');
@@ -124,6 +124,7 @@ function displayTask(task) {
     titleDisplay.textContent = task.title;
     taskLeft.appendChild(titleDisplay);
 
+    // Style task depending on its completion status
     if (task.isComplete) {
         taskStatus.appendChild(taskComplete);
         titleDisplay.style.setProperty('text-decoration', 'line-through');
@@ -134,6 +135,7 @@ function displayTask(task) {
 
     taskStatus.onclick = toggleComplete.bind(this, taskIncomplete, taskStatus, titleDisplay, task);
 
+    // Display 'expand' image if task has details
     if (task.details) {
         const expandTask = document.createElement('img');
         expandTask.src = './images/expand-task.svg';
@@ -165,6 +167,7 @@ function displayTask(task) {
     const priority = document.createElement('img');
     priority.src = './images/star-filled.svg';
 
+    // Style task depending on its priority status
     if (task.isImportant) {
         priorityStatus.appendChild(priority);
         priorityStatus.classList.add('priority');
@@ -200,7 +203,7 @@ function displayTask(task) {
     taskDiv.onclick = displayDetails.bind(this, task, taskDiv);
 }
 
-// function to clear display 
+// Clear current task display
 function clearDisplay() {
     while (toDoContainer.firstChild && toDoContainer.firstChild.className != 'edit-task-form') {
         toDoContainer.removeChild(toDoContainer.firstChild);
@@ -213,11 +216,11 @@ function clearDisplay() {
     editTaskForm.style.display = 'none';
 }
 
-// function to update the task list display
+// Update task display depending on selected home category or project tab
 function updateTaskDisplay() {
     clearDisplay();
 
-    // if a task is complete, remove it from the task list
+    // If a task is complete, removes it from the task list temporarily
     for (let i = myTaskList.length - 1; i >= 0; i--) {
         const task = myTaskList[i];
         if (task.isComplete) {
@@ -225,7 +228,7 @@ function updateTaskDisplay() {
         }
     }
 
-    // sort the tasks that are incomplete
+    // Sorts the remaining tasks that are uncompleted
     myTaskList.sort((a, b) => {
         let x;
         let y;
@@ -247,13 +250,13 @@ function updateTaskDisplay() {
         return 0;
     });
 
+    // Saves uncompleted tasks to local storage
     localStorage.setItem("uncompletedTaskList", JSON.stringify(myTaskList));
 
-    // append the completed tasks to the bottom of the sorted incomplete tasks
+    // Appends the completed tasks to the bottom of the sorted uncompleted tasks
     myTaskList.push.apply(myTaskList, isCompleteArray);
 
-    // saveToLocalStorage();
-    
+    // Gets and formats current date 
     const date = new Date();
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -269,6 +272,7 @@ function updateTaskDisplay() {
         currentDate = `${year}-${month}-${day}`;
     }
 
+    // Filters task display depending on selected home category or project tab
     if (contentHeader.textContent === 'All Tasks') {
         myTaskList.forEach((task) => {
             displayTask(task);
@@ -306,6 +310,7 @@ function updateTaskDisplay() {
     }
 }
 
+// Displays a project
 function displayProject(project) {
     const projectLink = document.createElement('div');
     projectLink.classList.add('project-link');
@@ -338,6 +343,7 @@ function displayProject(project) {
 
     tabs.push(projectLink);
 
+    // Displays appropriate tasks whenever a project tab is selected
     projectLink.onclick = function() {
         removeTaskBtn();
         displayTaskBtn();
@@ -352,14 +358,14 @@ function displayProject(project) {
     projectDeleteBtn.onclick = deleteProject.bind(this, project, projectLink, projectLinkContainer, contentHeader);
 }
 
-// CAN REMOVE THIS ONCE FINISHED AND DELETE TEST PROJECTS
+// Initial project display on page load up
 function initialProjectDisplay() {
     myProjectList.forEach((project) => {
         displayProject(project);
     });
 }
 
-// functions to display appropriate tasks for chosen tab
+// Functions to display appropriate tasks for selected home category tab
 function displayAllTasks() {
     removeTaskBtn();
     displayTaskBtn();
@@ -393,18 +399,20 @@ function displayImportant() {
     closeTaskForm();
 }
 
+// Opens menu in mobile view
 function openMenu() {
     sidebar.classList.add('show-sidebar');
 }
 
+// Closes menu in mobile view
 function closeMenu() {
     sidebar.classList.remove('show-sidebar');
 }
 
+// Event listener for the menu button in mobile view
 menuBtn.addEventListener('click', () => {
     if (sidebar.classList.value === 'sidebar') {
         openMenu();
-        console.log('hello');
     } else {
         closeMenu();
     }

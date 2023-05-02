@@ -8,29 +8,36 @@ const editProjectNameInput = document.querySelector('.edit-project-name-input');
 const editProjectSubmitBtn = document.querySelector('.edit-project-submit-btn');
 const editProjectCancelBtn = document.querySelector('.edit-project-cancel-btn');
 
+
+// Opens form to edit projects
 function openEditProjectForm() {
     editProjectForm.style.display = 'block';
 }
 
+// Clears input fields on form to edit projects
 function clearEditProjectForm() {
     editProjectNameInput.value = '';
 }
 
+// Displays hidden project (the project currently being edited, which is hidden when form to edit project opens)
 function showHiddenProject() {
     const openProject = document.querySelector('.editing-project');
     openProject.classList.toggle('editing-project');
 }
 
+// Closes form to edit projects
 function closeEditProjectForm() {
     editProjectForm.style.display = 'none';
     clearEditProjectForm();
     showHiddenProject();
 }
 
+// Autofills input field on form to edit projects with the current info of the project being edited
 function autofillProjectInfo(project) {
     editProjectNameInput.value = project.name;
 }
 
+// Opens the form to edit projects on the selected project
 function editProject(project, projectLink, projectLinkContainer, projectNameDisplay, contentHeader) {
     ignoreEvent();
 
@@ -48,6 +55,7 @@ function editProject(project, projectLink, projectLinkContainer, projectNameDisp
         editProjectNameInput.focus();
     }
 
+    // Saves the new project information when the save button is clicked
     editProjectSubmitBtn.onclick = function(e) {
         if (!editProjectForm.checkValidity()) {
             editProjectForm.reportValidity();
@@ -68,6 +76,7 @@ function editProject(project, projectLink, projectLinkContainer, projectNameDisp
     editProjectCancelBtn.onclick = closeEditProjectForm;
 }
 
+// Deletes the selected project and updates display
 function deleteProject(project, projectLink, projectLinkContainer, contentHeader) {
     ignoreEvent();
 

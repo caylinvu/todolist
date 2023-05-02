@@ -10,7 +10,7 @@ const editSubmitBtn = document.querySelector('.edit-submit-btn');
 const editCancelBtn = document.querySelector('.edit-cancel-btn');
 const isCompleteArray = [];
 
-// function to ignore taskDiv onclick event when buttons within the taskDiv are clicked
+// Ignores taskDiv onclick event when buttons within the taskDiv are clicked
 function ignoreEvent(e) {
     if (!e) {
         e = window.event;
@@ -18,6 +18,7 @@ function ignoreEvent(e) {
     e.stopPropagation();
 }
 
+// Toggles the completion status of a task whenever the checkbox is clicked
 function toggleComplete(status, statusContainer, title, task) {
     ignoreEvent();
 
@@ -55,9 +56,9 @@ function toggleComplete(status, statusContainer, title, task) {
     }
 
     localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
-    // saveToLocalStorage();
 }
 
+// Toggles the priority status of a task whenever the star is clicked
 function togglePriority(statusContainer, task) {
     ignoreEvent();
 
@@ -82,6 +83,7 @@ function togglePriority(statusContainer, task) {
 
         task.isImportant = true;
     }
+
     if (isCompleteArray) {
         localStorage.setItem("uncompletedTaskList", JSON.stringify(myTaskList));
         localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
@@ -90,11 +92,13 @@ function togglePriority(statusContainer, task) {
     }
 }
 
+// Opens form to edit tasks
 function openEditTaskForm() {
     editTaskForm.style.display = 'block';
     editTitleInput.focus();
 }
 
+// Clears input fields on form to edit tasks
 function clearEditTaskForm() {
     editTitleInput.value = '';
     editDetailsInput.value = '';
@@ -102,17 +106,20 @@ function clearEditTaskForm() {
     editIsImportantInput.checked = false;
 }
 
+// Displays hidden task (the task currently being edited, which is hidden when form to edit task opens)
 function showHiddenTask() {
     const openTask = document.querySelector('.editing-task');
     openTask.classList.toggle('editing-task');
 }
 
+// Closes form to edit tasks
 function closeEditTaskForm() {
     editTaskForm.style.display = 'none';
     clearEditTaskForm();
     showHiddenTask();
 }
 
+// Autofills input fields on form to edit tasks with the current task info of the task being edited
 function autofillTaskInfo(task) {
     editTitleInput.value = task.title;
     editDueDateInput.value = task.dueDate;
@@ -124,6 +131,7 @@ function autofillTaskInfo(task) {
     }
 }
 
+// Opens the form to edit tasks on the selected task
 function editTask(task, taskDiv, toDoContainer) {
     ignoreEvent();
 
@@ -141,6 +149,7 @@ function editTask(task, taskDiv, toDoContainer) {
         editTitleInput.focus();
     }
 
+    // Saves the new task information when the save button is clicked
     editSubmitBtn.onclick = function(e) {
         if (!editTaskForm.checkValidity()) {
             editTaskForm.reportValidity();
@@ -165,6 +174,7 @@ function editTask(task, taskDiv, toDoContainer) {
     editCancelBtn.onclick = closeEditTaskForm;
 }
 
+// Deletes selected task from appropriate arrays and updates display
 function deleteTask(index, task) {
     ignoreEvent();
     myTaskList.splice(index, 1);
@@ -181,7 +191,6 @@ function deleteTask(index, task) {
     } else {
         localStorage.setItem("myTaskList", JSON.stringify(myTaskList));
     }
-    // saveToLocalStorage();
 }
 
 export { toggleComplete, togglePriority, editTask, deleteTask, ignoreEvent, isCompleteArray }

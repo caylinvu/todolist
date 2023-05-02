@@ -6,8 +6,10 @@ const projectNameInput = document.getElementById('project-name');
 const projectSubmitBtn = document.querySelector('.project-submit-btn');
 const myProjectList = [];
 
+// Factory function to create a new project object
 const project = (name) => ({ name });
 
+// Creates a new project and pushes it to myProjectList array
 function addProject() {
     const name = projectNameInput.value;
 
@@ -18,10 +20,12 @@ function addProject() {
     return newProject;
 }
 
+// Clears form to add new project
 function clearProjectForm() {
     projectNameInput.value = '';
 }
 
+// Adds the new project when the 'add' button is clicked
 projectSubmitBtn.addEventListener('click', (e) => {
     if (!projectForm.checkValidity()) {
         projectForm.reportValidity();
