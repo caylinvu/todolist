@@ -1,5 +1,6 @@
 import { myTaskList , saveToLocalStorage } from "./createTask";
 import { updateTaskDisplay } from "./display";
+import { getLocalStorage, getCurrentStatus } from ".";
 
 const editTaskForm = document.querySelector('.edit-task-form');
 const editTitleInput = document.getElementById('edit-title');
@@ -17,10 +18,6 @@ function ignoreEvent(e) {
     }
     e.stopPropagation();
 }
-
-// function statusToLocalStorage() {
-//     localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
-// }
 
 function toggleComplete(status, statusContainer, title, task) {
     ignoreEvent();
@@ -57,6 +54,8 @@ function toggleComplete(status, statusContainer, title, task) {
 
         updateTaskDisplay();
     }
+
+    localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
     // saveToLocalStorage();
 }
 
@@ -83,6 +82,12 @@ function togglePriority(statusContainer, task) {
         statusContainer.appendChild(priority);
 
         task.isImportant = true;
+    }
+    if (isCompleteArray) {
+        localStorage.setItem("separatedTaskList", JSON.stringify(myTaskList));
+        localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
+    } else {
+        localStorage.setItem("myTaskList", JSON.stringify(myTaskList));
     }
 }
 
@@ -148,25 +153,36 @@ function editTask(task, taskDiv, toDoContainer) {
 
             closeEditTaskForm();
             updateTaskDisplay();
+            if (isCompleteArray) {
+                localStorage.setItem("separatedTaskList", JSON.stringify(myTaskList));
+                localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
+            } else {
+                localStorage.setItem("myTaskList", JSON.stringify(myTaskList));
+            }
             e.preventDefault();
         }
     };
-    
+
     editCancelBtn.onclick = closeEditTaskForm;
 }
 
 function deleteTask(index, task) {
     ignoreEvent();
     myTaskList.splice(index, 1);
-    // console.log(isCompleteArray);
-    // console.log(task);
-    // console.log(isCompleteArray.includes(task));
 
     if (isCompleteArray.includes(task)) {
         isCompleteArray.splice(isCompleteArray.indexOf(task), 1);
     }
 
     updateTaskDisplay();
+
+    if (isCompleteArray) {
+        localStorage.setItem("separatedTaskList", JSON.stringify(myTaskList));
+        localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
+    } else {
+        localStorage.setItem("myTaskList", JSON.stringify(myTaskList));
+    }
+    // saveToLocalStorage();
 }
 
 export { toggleComplete, togglePriority, editTask, deleteTask, ignoreEvent, isCompleteArray }

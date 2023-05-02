@@ -12,21 +12,35 @@ const tabs = [allTasks, today, thisWeek, important];
 // LOCAL STORAGE
 // localStorage.clear();
 
+function getCurrentStatus() {
+    const storedCompletedTasks = JSON.parse(localStorage.getItem("isCompleteArray"));
+    isCompleteArray.length = 0;
+    isCompleteArray.push.apply(isCompleteArray, storedCompletedTasks);
+    console.log(storedCompletedTasks);
+}
+
+function getSeparatedTaskList() {
+    const separatedTaskList = JSON.parse(localStorage.getItem("separatedTaskList"));
+    myTaskList.length = 0;
+    myTaskList.push.apply(myTaskList, separatedTaskList);
+    console.log(myTaskList);
+}
+
 function getLocalStorage() {
     const storedTasks = JSON.parse(localStorage.getItem("myTaskList"));
     myTaskList.length = 0;
     myTaskList.push.apply(myTaskList, storedTasks);
-    // console.log(storedTasks);
+    console.log(storedTasks);
 
-    const storedCompletedTasks = JSON.parse(localStorage.getItem("isCompleteArray"));
-    isCompleteArray.length = 0;
-    isCompleteArray.push.apply(isCompleteArray, storedCompletedTasks);
-    // console.log(storedCompletedTasks);
+    if (isCompleteArray) {
+        getCurrentStatus();
+        getSeparatedTaskList();
+    }
 
     const storedProjects = JSON.parse(localStorage.getItem("myProjectList"));
     myProjectList.length = 0;
     myProjectList.push.apply(myProjectList, storedProjects);
-    // console.log(storedProjects);
+    console.log(storedProjects);
 }
 
 getLocalStorage();
@@ -38,7 +52,7 @@ today.addEventListener('click', displayToday);
 thisWeek.addEventListener('click', displayThisWeek);
 important.addEventListener('click', displayImportant);
 
-export { allTasks, today, thisWeek, important, tabs, getLocalStorage }
+export { allTasks, today, thisWeek, important, tabs, getLocalStorage, getCurrentStatus }
 
 // TO DO
 
@@ -46,4 +60,6 @@ export { allTasks, today, thisWeek, important, tabs, getLocalStorage }
 
 // ADD MOBILE SUPPORT
 
-// FIX LOCAL STORAGE ISSUE WHEN EDITING TASKS
+// CLEAN UP CODE
+
+// SEND TO NADINE

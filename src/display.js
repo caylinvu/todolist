@@ -1,5 +1,5 @@
 import { allTasks, today, thisWeek, important, tabs } from './index';
-import { myTaskList, clearTaskForm, saveToLocalStorage } from './createTask';
+import { myTaskList, clearTaskForm } from './createTask';
 import { toggleComplete, togglePriority, editTask, deleteTask, isCompleteArray } from './editTask';
 import { myProjectList, clearProjectForm } from './createProject';
 import { editProject, deleteProject } from './editProject';
@@ -17,6 +17,8 @@ const projectLinkContainer = document.querySelector('.project-links');
 const editProjectForm = document.querySelector('.edit-project-form');
 const titleInput = document.getElementById('title');
 const projectNameInput = document.getElementById('project-name');
+const menuBtn = document.querySelector('.menu-btn');
+const sidebar = document.querySelector('.sidebar');
 
 // highlight the selected navigation tab
 function highlightSelected(selectedTab) {
@@ -246,6 +248,8 @@ function updateTaskDisplay() {
         return 0;
     });
 
+    localStorage.setItem("separatedTaskList", JSON.stringify(myTaskList));
+
     // append the completed tasks to the bottom of the sorted incomplete tasks
     myTaskList.push.apply(myTaskList, isCompleteArray);
 
@@ -256,8 +260,12 @@ function updateTaskDisplay() {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     let currentDate;
-    if (month < 10) {
+    if (month < 10 && day > 10) {
         currentDate = `${year}-0${month}-${day}`;
+    } else if (month < 10 && day < 10) {
+        currentDate = `${year}-0${month}-0${day}`;
+    } else if (month > 10 && day < 10) {
+        currentDate = `${year}-${month}-0${day}`;
     } else {
         currentDate = `${year}-${month}-${day}`;
     }
@@ -385,5 +393,22 @@ function displayImportant() {
     updateTaskDisplay();
     closeTaskForm();
 }
+
+function openMenu() {
+    sidebar.classList.add('show-sidebar');
+}
+
+function closeMenu() {
+    sidebar.classList.remove('show-sidebar');
+}
+
+menuBtn.addEventListener('click', () => {
+    if (sidebar.classList.value === 'sidebar') {
+        openMenu();
+        console.log('hello');
+    } else {
+        closeMenu();
+    }
+});
 
 export { displayAllTasks, displayToday, displayThisWeek, displayImportant, closeTaskForm, updateTaskDisplay, closeProjectForm, initialProjectDisplay, displayProject }

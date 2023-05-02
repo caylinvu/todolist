@@ -14,13 +14,13 @@ const myTaskList = [];
 
 const task = (title, details, dueDate, isImportant, isComplete, taskProject) => ({ title, details, dueDate, isImportant, isComplete, taskProject });
 
-const testTask = task('This task is due this week', 'Details of the task', '2023-04-29', false, false);
-const testTask2 = task('This task is due today', 'This task has details', '2023-04-26', false, false);
+const testTask = task('This task is due this week', 'Details of the task', '2023-05-05', false, false);
+const testTask2 = task('This task is due today', 'This task has details', '2023-05-01', false, false);
 const testTask3 = task('This task is important', 'This task also has details', '2023-06-22', true, false);
-const testTask4 = task('This task is due next week', '', '2023-05-05', false, false);
-const testTask5 = task('This task is due next week but within 7 days', '', '2023-05-01', false, false);
-const testTask6 = task('This task is due exactly 7 days from now', '', '2023-05-03', true, false);
-const testTask7 = task('This task is due a day after 7 days', '', '2023-05-04', false, false);
+const testTask4 = task('This task is due next week', '', '2023-05-12', false, false);
+const testTask5 = task('This task is due next week but within 7 days', '', '2023-05-07', false, false);
+const testTask6 = task('This task is due exactly 7 days from now', '', '2023-05-08', true, false);
+const testTask7 = task('This task is due a day after 7 days', '', '2023-05-09', false, false);
 const testTask8 = task('This task has no due date', '', '', false, false);
 const testTask9 = task('PROGRAMMING TASK', '', '', false, false, 'Programming');
 const testTask10 = task('PROGRAMMING TASK 2', '', '2023-07-21', false, false, 'Programming');
@@ -36,7 +36,7 @@ myTaskList.push(testTask, testTask2, testTask3, testTask4, testTask5, testTask6,
 
 function saveToLocalStorage() {
     localStorage.setItem("myTaskList", JSON.stringify(myTaskList));
-    localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
+    // localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
     localStorage.setItem("myProjectList", JSON.stringify(myProjectList));
 
     getLocalStorage();
