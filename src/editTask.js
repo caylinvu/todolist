@@ -1,6 +1,5 @@
-import { myTaskList , saveToLocalStorage } from "./createTask";
+import { myTaskList } from "./createTask";
 import { updateTaskDisplay } from "./display";
-import { getLocalStorage, getCurrentStatus } from ".";
 
 const editTaskForm = document.querySelector('.edit-task-form');
 const editTitleInput = document.getElementById('edit-title');
@@ -84,7 +83,7 @@ function togglePriority(statusContainer, task) {
         task.isImportant = true;
     }
     if (isCompleteArray) {
-        localStorage.setItem("separatedTaskList", JSON.stringify(myTaskList));
+        localStorage.setItem("uncompletedTaskList", JSON.stringify(myTaskList));
         localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
     } else {
         localStorage.setItem("myTaskList", JSON.stringify(myTaskList));
@@ -154,7 +153,7 @@ function editTask(task, taskDiv, toDoContainer) {
             closeEditTaskForm();
             updateTaskDisplay();
             if (isCompleteArray) {
-                localStorage.setItem("separatedTaskList", JSON.stringify(myTaskList));
+                localStorage.setItem("uncompletedTaskList", JSON.stringify(myTaskList));
                 localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
             } else {
                 localStorage.setItem("myTaskList", JSON.stringify(myTaskList));
@@ -177,7 +176,7 @@ function deleteTask(index, task) {
     updateTaskDisplay();
 
     if (isCompleteArray) {
-        localStorage.setItem("separatedTaskList", JSON.stringify(myTaskList));
+        localStorage.setItem("uncompletedTaskList", JSON.stringify(myTaskList));
         localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
     } else {
         localStorage.setItem("myTaskList", JSON.stringify(myTaskList));

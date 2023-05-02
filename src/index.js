@@ -10,52 +10,47 @@ const important = document.getElementById('important');
 const tabs = [allTasks, today, thisWeek, important];
 
 // LOCAL STORAGE
-// localStorage.clear();
 
-function getCurrentStatus() {
+// Pulls isCompleteArray from local storage to get current completed tasks
+function getCompletedTasks() {
     const storedCompletedTasks = JSON.parse(localStorage.getItem("isCompleteArray"));
     isCompleteArray.length = 0;
     isCompleteArray.push.apply(isCompleteArray, storedCompletedTasks);
-    console.log(storedCompletedTasks);
 }
 
-function getSeparatedTaskList() {
-    const separatedTaskList = JSON.parse(localStorage.getItem("separatedTaskList"));
+// Pulls uncompletedTaskList from local storage to get current uncompleted tasks
+function getUncompletedTasks() {
+    const storedUncompletedTasks = JSON.parse(localStorage.getItem("uncompletedTaskList"));
     myTaskList.length = 0;
-    myTaskList.push.apply(myTaskList, separatedTaskList);
-    console.log(myTaskList);
+    myTaskList.push.apply(myTaskList, storedUncompletedTasks);
 }
 
+// Pulls myTaskList and myProjectList from local storage to get stored tasks and projects
+// If the isCompleteArray is NOT empty, pulls completed and uncompleted task lists from local storage
 function getLocalStorage() {
     const storedTasks = JSON.parse(localStorage.getItem("myTaskList"));
     myTaskList.length = 0;
     myTaskList.push.apply(myTaskList, storedTasks);
-    console.log(storedTasks);
 
     if (isCompleteArray) {
-        getCurrentStatus();
-        getSeparatedTaskList();
+        getCompletedTasks();
+        getUncompletedTasks();
     }
 
     const storedProjects = JSON.parse(localStorage.getItem("myProjectList"));
     myProjectList.length = 0;
     myProjectList.push.apply(myProjectList, storedProjects);
-    console.log(storedProjects);
 }
 
+// Initial pull from local storage and page display
 getLocalStorage();
 initialProjectDisplay();
 displayAllTasks();
 
+// Event listeners for home category tabs
 allTasks.addEventListener('click', displayAllTasks);
 today.addEventListener('click', displayToday);
 thisWeek.addEventListener('click', displayThisWeek);
 important.addEventListener('click', displayImportant);
 
-export { allTasks, today, thisWeek, important, tabs, getLocalStorage, getCurrentStatus }
-
-// TO DO
-
-// CLEAN UP CODE
-
-// SEND TO NADINE
+export { allTasks, today, thisWeek, important, tabs, getLocalStorage }

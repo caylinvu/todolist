@@ -14,7 +14,6 @@ const projectForm = document.querySelector('.project-form');
 const addProjectBtn = document.querySelector('.project-btn');
 const projectCancelBtn = document.querySelector('.project-cancel-btn');
 const projectLinkContainer = document.querySelector('.project-links');
-const editProjectForm = document.querySelector('.edit-project-form');
 const titleInput = document.getElementById('title');
 const projectNameInput = document.getElementById('project-name');
 const menuBtn = document.querySelector('.menu-btn');
@@ -248,7 +247,7 @@ function updateTaskDisplay() {
         return 0;
     });
 
-    localStorage.setItem("separatedTaskList", JSON.stringify(myTaskList));
+    localStorage.setItem("uncompletedTaskList", JSON.stringify(myTaskList));
 
     // append the completed tasks to the bottom of the sorted incomplete tasks
     myTaskList.push.apply(myTaskList, isCompleteArray);

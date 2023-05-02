@@ -8,11 +8,6 @@ const myProjectList = [];
 
 const project = (name) => ({ name });
 
-const testProject = project('Programming');
-const testProject2 = project('Home');
-const testProject3 = project('Reading');
-myProjectList.push(testProject, testProject2, testProject3);
-
 function addProject() {
     const name = projectNameInput.value;
 

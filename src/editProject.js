@@ -1,7 +1,7 @@
-import { ignoreEvent } from "./editTask";
+import { ignoreEvent , isCompleteArray } from "./editTask";
 import { myProjectList } from "./createProject";
 import { displayAllTasks, updateTaskDisplay } from "./display";
-import { myTaskList , saveToLocalStorage } from "./createTask";
+import { myTaskList } from "./createTask";
 
 const editProjectForm = document.querySelector('.edit-project-form');
 const editProjectNameInput = document.querySelector('.edit-project-name-input');
@@ -57,9 +57,10 @@ function editProject(project, projectLink, projectLinkContainer, projectNameDisp
             }
             project.name = editProjectNameInput.value;
             projectNameDisplay.textContent = project.name;
-
+            console.log(project.name);
             
             closeEditProjectForm();
+            localStorage.setItem("myProjectList", JSON.stringify(myProjectList));
             e.preventDefault();
         }
     }
@@ -78,12 +79,22 @@ function deleteProject(project, projectLink, projectLinkContainer, contentHeader
         }
     }
 
+    for (let i = isCompleteArray.length - 1; i >= 0; i--) {
+        const completedTask = isCompleteArray[i];
+        if (completedTask.taskProject === project.name) {
+            isCompleteArray.splice(isCompleteArray.indexOf(completedTask), 1);
+            localStorage.setItem("isCompleteArray", JSON.stringify(isCompleteArray));
+            updateTaskDisplay();
+        }
+    }
+
     if (project.name === contentHeader.textContent) {
         displayAllTasks();
     }
 
     myProjectList.splice(myProjectList.indexOf(project), 1);
     projectLinkContainer.removeChild(projectLink);
+    localStorage.setItem("myProjectList", JSON.stringify(myProjectList));
 }
 
 export { editProject, deleteProject }
