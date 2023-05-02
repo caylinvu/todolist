@@ -10,6 +10,11 @@
     --hover-filter: brightness(95%);
 }
 
+html {
+    position: relative;
+    min-height: 100vh;
+}
+
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -389,6 +394,26 @@ input {
     cursor: pointer;
     filter: var(--hover-filter);
     transition: .2s;
+}
+
+/* ---------------FOOTER--------------- */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    font-size: 17px;
+}
+
+.footer img {
+    width: 23px;
+    filter: var(--icon-filter2);
+    display: block;
 }
 
 /* ---------------MOBILE VIEW--------------- */

@@ -56,10 +56,6 @@ export { allTasks, today, thisWeek, important, tabs, getLocalStorage, getCurrent
 
 // TO DO
 
-// FINISH UI
-
-// ADD MOBILE SUPPORT
-
 // CLEAN UP CODE
 
 // SEND TO NADINE
