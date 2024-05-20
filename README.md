@@ -1,4 +1,24 @@
-# todolist
-TOP - to do list project
+# To Do List
+To do list application that allows the user to create different projects that they can add tasks to
 
-In this project, I will create a to do list program using JavaScript that will allow the user to create different projects that they can add to do items to. There will be a home page in which the user will be able to view ALL to do items from all projects in one spot. Users will also be able to mark to do items as important and will be able to view those high priority items in another view.
+Live: https://caylinvu.github.io/todolist/
+
+## Features
+- Create tasks
+- Create projects to add specfic tasks to
+- Filter to do list by project, importance, or due date
+- Mark a task as important
+- Mark a task as complete
+- Edit a task
+- Delete a task
+- Tasks saved in local storage
+
+## Tech Used
+- JavaScript
+- HTML
+- CSS
+- localStorage
+
+## Purpose
+- Practice implementing an application with JavaScript
+- Practice utilizing local storage
